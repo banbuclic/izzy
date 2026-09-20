@@ -2141,3 +2141,177 @@
     }
 }
 
+
+
+/* ============================================================
+   IZZY UI 2026 | CUENTAS POR COBRAR
+   Alineación visual al flujo Caja -> Facturar -> CxC.
+   ============================================================ */
+
+.izzy-ui-2026 .cxc-page .rv-section-card {
+    border-color: #DCE6EB !important;
+    border-radius: 13px !important;
+    box-shadow: 0 5px 18px rgba(5,63,92,.055) !important;
+}
+
+.izzy-ui-2026 .cxc-page .rv-section-header {
+    min-height: 58px !important;
+    padding: 13px 16px !important;
+    border-bottom-color: #E7EEF2 !important;
+    background: #fff !important;
+}
+
+.izzy-ui-2026 .cxc-page .rv-section-header h5 {
+    color: #053F5C !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+}
+
+.izzy-ui-2026 .cxc-page .rv-section-header small {
+    color: #71828B !important;
+    font-size: 11px !important;
+}
+
+.izzy-ui-2026 .cxc-page .rv-toggle-section {
+    min-width: 88px !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    padding: 5px 10px !important;
+    border: 1px solid #D1DDE3 !important;
+    background: #EEF4F6 !important;
+    color: #405866 !important;
+    box-shadow: none !important;
+}
+
+.izzy-ui-2026 .cxc-page .rv-toggle-section:hover {
+    background: #E6EFF2 !important;
+    border-color: #C5D4DB !important;
+    color: #053F5C !important;
+}
+
+.izzy-ui-2026 .cxc-page .rv-section-body {
+    padding: 14px 16px !important;
+}
+
+/* Filtros */
+.izzy-ui-2026 #cxcFiltrosSection .form-group {
+    margin-bottom: 0 !important;
+}
+
+.izzy-ui-2026 #cxcFiltrosSection label {
+    color: #5E737E !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+}
+
+.izzy-ui-2026 #cxcFiltrosSection .form-control,
+.izzy-ui-2026 #cxcFiltrosSection .input-group-text {
+    min-height: 36px !important;
+    border-color: #D5E1E6 !important;
+}
+
+.izzy-ui-2026 #cxcFiltrosSection .input-group-text {
+    background: #F4F8FA !important;
+    color: #429EBD !important;
+}
+
+/* KPI */
+.izzy-ui-2026 #cxcKpisSection .rv-kpi {
+    min-height: 112px !important;
+    padding: 14px 15px !important;
+    border-color: #DCE6EB !important;
+    border-left: 4px solid #429EBD !important;
+    border-radius: 11px !important;
+    background: #fff !important;
+    box-shadow: 0 3px 11px rgba(5,63,92,.045) !important;
+}
+
+.izzy-ui-2026 #cxcKpisSection .rv-kpi::before,
+.izzy-ui-2026 #cxcKpisSection .rv-kpi::after {
+    display: none !important;
+    content: none !important;
+}
+
+.izzy-ui-2026 #cxcKpisSection .rv-kpi strong {
+    color: #053F5C !important;
+    font-size: 21px !important;
+    text-shadow: none !important;
+}
+
+.izzy-ui-2026 #cxcKpisSection .rv-kpi-label {
+    color: #667B86 !important;
+}
+
+.izzy-ui-2026 #cxcKpisSection .rv-kpi-icon {
+    width: 40px !important;
+    height: 40px !important;
+    flex-basis: 40px !important;
+    border: 1px solid rgba(66,158,189,.17) !important;
+    border-radius: 10px !important;
+    background: rgba(66,158,189,.09) !important;
+    color: #429EBD !important;
+    font-size: 16px !important;
+}
+
+.izzy-ui-2026 #cxcKpisSection .cxc-kpi-registros { border-left-color:#429EBD !important; }
+.izzy-ui-2026 #cxcKpisSection .cxc-kpi-credito { border-left-color:#9FE7F5 !important; }
+.izzy-ui-2026 #cxcKpisSection .cxc-kpi-abonos { border-left-color:#F7AD19 !important; }
+.izzy-ui-2026 #cxcKpisSection .cxc-kpi-saldo { border-left-color:#F27F0C !important; background:#FFFCF8 !important; }
+.izzy-ui-2026 #cxcKpisSection .cxc-kpi-recuperacion { border-left-color:#429EBD !important; }
+.izzy-ui-2026 #cxcKpisSection .cxc-kpi-promedio { border-left-color:#9FE7F5 !important; }
+
+/* Listado */
+.izzy-ui-2026 #cxcListadoSection .rv-toolbar-left .btn {
+    min-width: 0 !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 5px 10px !important;
+    border-radius: 7px !important;
+    font-size: 11.5px !important;
+}
+
+.izzy-ui-2026 #cxcListadoSection .rv-view-switch {
+    border-color: #D6E1E6 !important;
+    background: #F4F8FA !important;
+}
+
+.izzy-ui-2026 #cxcListadoSection .rv-view-btn.active {
+    background: #429EBD !important;
+    color: #fff !important;
+}
+
+.izzy-ui-2026 #cxcListadoSection .rv-search-wrap > i {
+    background: #F4F8FA !important;
+    color: #429EBD !important;
+}
+
+.izzy-ui-2026 #cxcListado .rv-detail-header {
+    background: #053F5C !important;
+}
+
+.izzy-ui-2026 #cxcListado .rv-detail-row,
+.izzy-ui-2026 #cxcListado .rv-mini-card {
+    border-color: #DCE6EB !important;
+    border-top-color: #429EBD !important;
+    box-shadow: 0 2px 8px rgba(5,63,92,.045) !important;
+}
+
+.izzy-ui-2026 #cxcListado .rv-detail-row:hover,
+.izzy-ui-2026 #cxcListado .rv-mini-card:hover {
+    border-color: #C5DDE6 !important;
+    border-top-color: #429EBD !important;
+    box-shadow: 0 8px 18px rgba(5,63,92,.085) !important;
+}
+
+.izzy-ui-2026 #cxcListadoSection .rv-pagination button.active {
+    background: #429EBD !important;
+    border-color: #429EBD !important;
+    color: #fff !important;
+}
+
+.izzy-ui-2026 #cxcTotales .rv-total-detail {
+    border-color: rgba(66,158,189,.24) !important;
+    border-top-color: #429EBD !important;
+    background: rgba(159,231,245,.12) !important;
+    color: #053F5C !important;
+}
