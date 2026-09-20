@@ -269,3 +269,338 @@
         width: 100%;
     }
 }
+
+
+/* ============================================================
+   IZZY UI 2026 | FACTURACIÓN
+   Reestructura visual sin alterar IDs, eventos ni lógica.
+   ============================================================ */
+
+.izzy-ui-2026 #view_bill,
+.izzy-ui-2026 #view_bill .container-fluid {
+    background: #F4F7F9;
+}
+
+.izzy-ui-2026 .facturas-workspace-card {
+    overflow: visible;
+    border: 1px solid #DCE6EB !important;
+    border-radius: 13px !important;
+    background: #fff !important;
+    box-shadow: 0 6px 20px rgba(5,63,92,.065) !important;
+}
+
+.izzy-ui-2026 .facturas-workspace-header {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 13px 17px !important;
+    border-bottom: 1px solid #E7EEF2 !important;
+    background: #fff !important;
+    color: #053F5C !important;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.izzy-ui-2026 .facturas-workspace-header i {
+    color: #429EBD !important;
+}
+
+.izzy-ui-2026 .facturas-workspace-body {
+    padding: 16px !important;
+}
+
+/* Contexto de venta */
+.izzy-ui-2026 .facturas-context-grid {
+    display: grid;
+    grid-template-columns: minmax(260px,1.2fr) minmax(260px,.8fr) minmax(170px,.55fr);
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.izzy-ui-2026 .facturas-context-grid > .form-group {
+    min-width: 0;
+    min-height: 72px;
+    margin: 0 !important;
+    padding: 12px 14px !important;
+    border: 1px solid #DCE6EB;
+    border-radius: 10px;
+    background: #F9FBFC;
+}
+
+.izzy-ui-2026 .customer-bill-box-left,
+.izzy-ui-2026 .customer-bill-box-center,
+.izzy-ui-2026 .customer-bill-box-right {
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+}
+
+.izzy-ui-2026 .bill-header-row,
+.izzy-ui-2026 .bill-row {
+    color: #405866;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.izzy-ui-2026 .bill-header-row {
+    color: #053F5C;
+    font-weight: 750;
+}
+
+.izzy-ui-2026 .customer-bill-box-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #607681;
+    text-align: right;
+}
+
+.izzy-ui-2026 .facturas-counter {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 !important;
+    border: 1px solid rgba(66,158,189,.20);
+    border-radius: 9px;
+    background: rgba(159,231,245,.14);
+    color: #285E75;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* Área operativa */
+.izzy-ui-2026 .facturas-operacion {
+    padding: 12px;
+    border: 1px solid #DCE6EB;
+    border-radius: 11px;
+    background: #FBFDFE;
+}
+
+.izzy-ui-2026 .facturas-primary-toolbar {
+    gap: 7px;
+    margin-bottom: 10px !important;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #E7EEF2;
+}
+
+.izzy-ui-2026 .facturas-primary-toolbar > .btn,
+.izzy-ui-2026 .facturas-primary-toolbar > span > .btn {
+    min-width: 0 !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    margin: 0 !important;
+    padding: 5px 10px !important;
+    gap: 5px !important;
+    border-radius: 7px !important;
+    font-size: 11.5px !important;
+    font-weight: 700 !important;
+    box-shadow: none !important;
+}
+
+.izzy-ui-2026 .facturas-primary-toolbar > span {
+    display: inline-flex;
+    margin: 0 !important;
+}
+
+.izzy-ui-2026 .facturas-primary-toolbar i {
+    font-size: 11px !important;
+}
+
+/* Jerarquía: registrar es la acción principal */
+.izzy-ui-2026 #reg_factura {
+    background: #053F5C !important;
+    border-color: #053F5C !important;
+    color: #fff !important;
+}
+
+.izzy-ui-2026 #reg_factura:hover {
+    background: #07364D !important;
+    border-color: #07364D !important;
+}
+
+.izzy-ui-2026 #btn_apertura,
+.izzy-ui-2026 #btn_cierre,
+.izzy-ui-2026 #add_cliente,
+.izzy-ui-2026 #add_vendedor,
+.izzy-ui-2026 #guardar_factura,
+.izzy-ui-2026 #help_factura {
+    background: #fff !important;
+    border: 1px solid #D3E0E6 !important;
+    color: #405866 !important;
+}
+
+.izzy-ui-2026 #btn_apertura:hover,
+.izzy-ui-2026 #btn_cierre:hover,
+.izzy-ui-2026 #add_cliente:hover,
+.izzy-ui-2026 #add_vendedor:hover,
+.izzy-ui-2026 #guardar_factura:hover,
+.izzy-ui-2026 #help_factura:hover {
+    background: #F1F7F9 !important;
+    border-color: rgba(66,158,189,.35) !important;
+    color: #053F5C !important;
+}
+
+.izzy-ui-2026 #btn_retiro_caja {
+    background: rgba(247,173,25,.14) !important;
+    border: 1px solid rgba(247,173,25,.35) !important;
+    color: #805700 !important;
+}
+
+.izzy-ui-2026 #btn_config_factura,
+.izzy-ui-2026 #btn_ver_caja_factura {
+    background: #EDF3F6 !important;
+    border: 1px solid #CAD8DF !important;
+    color: #405866 !important;
+}
+
+/* Opciones secundarias */
+.izzy-ui-2026 .facturas-options-toolbar {
+    gap: 8px 10px;
+    padding: 10px;
+    border: 1px solid #E3EBEF;
+    border-radius: 9px;
+    background: #fff;
+}
+
+.izzy-ui-2026 .facturas-options-toolbar > div {
+    min-height: 34px;
+}
+
+.izzy-ui-2026 .facturas-options-toolbar .col-form-label {
+    color: #526975;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+
+.izzy-ui-2026 #tipo-factura-control {
+    padding: 2px;
+    border: 1px solid #D6E1E6;
+    border-radius: 8px;
+    background: #F4F8FA;
+}
+
+.izzy-ui-2026 #tipo-factura-control .btn {
+    height: 29px !important;
+    min-height: 29px !important;
+    min-width: 70px !important;
+    padding: 4px 9px !important;
+    border: 0 !important;
+    border-radius: 6px !important;
+    font-size: 11px !important;
+}
+
+.izzy-ui-2026 #tipo-factura-control .btn.active,
+.izzy-ui-2026 #tipo-factura-control .btn-primary {
+    background: #429EBD !important;
+    color: #fff !important;
+}
+
+.izzy-ui-2026 .proforma-ui-box {
+    min-height: 34px;
+    padding: 5px 8px;
+    border: 1px solid #E1E9ED;
+    border-radius: 8px;
+    background: #F9FBFC;
+}
+
+.izzy-ui-2026 #btn_exoneracion,
+.izzy-ui-2026 #btn_ver_caja_factura {
+    height: 34px !important;
+    min-height: 34px !important;
+    min-width: 0 !important;
+    padding: 5px 10px !important;
+    font-size: 11.5px !important;
+}
+
+/* Controles de facturación */
+.izzy-ui-2026 #invoice-form .form-control,
+.izzy-ui-2026 #invoice-form .input-group-text {
+    min-height: 36px;
+    border-color: #D4E0E6;
+}
+
+.izzy-ui-2026 #invoice-form .form-control {
+    color: #173746;
+}
+
+.izzy-ui-2026 #invoice-form label {
+    color: #526975;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+/* Footer de totales: más limpio pero conserva su comportamiento */
+.izzy-ui-2026 #view_bill .footer1 {
+    border-top: 1px solid #DCE6EB !important;
+    background: rgba(255,255,255,.97) !important;
+    box-shadow: 0 -5px 18px rgba(5,63,92,.08) !important;
+}
+
+.izzy-ui-2026 #view_bill .footer1 .metric {
+    border-color: #DCE6EB !important;
+    border-radius: 9px !important;
+    background: #F9FBFC !important;
+}
+
+/* Responsive */
+@media (max-width: 1199.98px) {
+    .izzy-ui-2026 .facturas-context-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .izzy-ui-2026 .customer-bill-box-right {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .izzy-ui-2026 .facturas-workspace-body {
+        padding: 10px !important;
+    }
+
+    .izzy-ui-2026 .facturas-context-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .izzy-ui-2026 .customer-bill-box-right {
+        grid-column: auto;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .izzy-ui-2026 .facturas-operacion {
+        padding: 9px;
+    }
+
+    .izzy-ui-2026 .facturas-primary-toolbar,
+    .izzy-ui-2026 .facturas-options-toolbar {
+        align-items: stretch !important;
+    }
+
+    .izzy-ui-2026 .facturas-primary-toolbar > .btn,
+    .izzy-ui-2026 .facturas-primary-toolbar > span {
+        flex: 1 1 calc(50% - 7px);
+    }
+
+    .izzy-ui-2026 .facturas-primary-toolbar > span > .btn {
+        width: 100%;
+    }
+
+    .izzy-ui-2026 .facturas-options-toolbar > * {
+        flex: 1 1 100%;
+        margin-right: 0 !important;
+    }
+}
+
+@media (max-width: 479.98px) {
+    .izzy-ui-2026 .facturas-primary-toolbar > .btn,
+    .izzy-ui-2026 .facturas-primary-toolbar > span {
+        flex-basis: 100%;
+    }
+}
