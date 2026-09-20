@@ -46,6 +46,8 @@ if (!$esRutaPublicaInicial && !$sesionValida) {
     header('Location: ' . SERVERURL . 'login/');
     exit;
 }
+
+require_once "./vistas/plantilla/modulos/tablerIcons.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
