@@ -1971,3 +1971,133 @@
         transform: none;
     }
 }
+
+
+/* ============================================================
+   IZZY UI 2026 | CAJAS
+   Ajuste visual alineado al nuevo shell global.
+   ============================================================ */
+
+.izzy-ui-2026 .cajas-section-card,
+.izzy-ui-2026 .cajas-list-card {
+    border-color: #DCE6EB !important;
+    border-radius: 13px !important;
+    box-shadow: 0 5px 18px rgba(5,63,92,.055) !important;
+}
+
+.izzy-ui-2026 .cajas-section-header {
+    min-height: 58px;
+    padding: 13px 16px !important;
+    border-bottom-color: #E7EEF2 !important;
+    background: #fff !important;
+}
+
+.izzy-ui-2026 .cajas-section-title h5 {
+    color: #053F5C !important;
+    font-size: 15px !important;
+    font-weight: 800 !important;
+}
+
+.izzy-ui-2026 .cajas-section-title p {
+    color: #71828B !important;
+    font-size: 11px !important;
+}
+
+.izzy-ui-2026 .cajas-section-icon {
+    width: 38px !important;
+    height: 38px !important;
+    flex-basis: 38px !important;
+    border-radius: 9px !important;
+    background: rgba(159,231,245,.20) !important;
+    border-color: rgba(66,158,189,.18) !important;
+    color: #3588A7 !important;
+}
+
+.izzy-ui-2026 .cajas-toggle-btn {
+    min-width: 88px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 5px 10px !important;
+    background: #EEF4F6 !important;
+    border: 1px solid #D1DDE3 !important;
+    color: #405866 !important;
+    font-size: 11.5px !important;
+}
+
+.izzy-ui-2026 .cajas-section-body {
+    padding: 14px 16px !important;
+}
+
+.izzy-ui-2026 .cajas-kpi-card {
+    min-height: 112px !important;
+    border-color: #DCE6EB !important;
+    border-radius: 11px !important;
+    background: #fff !important;
+    box-shadow: 0 3px 11px rgba(5,63,92,.045) !important;
+}
+
+.izzy-ui-2026 .cajas-kpi-card h3 {
+    color: #053F5C !important;
+    font-size: 22px !important;
+}
+
+.izzy-ui-2026 .cajas-kpi-label {
+    color: #667B86 !important;
+    font-size: 10px !important;
+}
+
+.izzy-ui-2026 .cajas-kpi-icon {
+    background: rgba(66,158,189,.10) !important;
+    border-color: rgba(66,158,189,.18) !important;
+    color: #429EBD !important;
+}
+
+.izzy-ui-2026 .cajas-kpi-registros { border-left-color: #429EBD !important; }
+.izzy-ui-2026 .cajas-kpi-abiertas { border-left-color: #9FE7F5 !important; }
+.izzy-ui-2026 .cajas-kpi-ventas { border-left-color: #F7AD19 !important; }
+.izzy-ui-2026 .cajas-kpi-neto { border-left-color: #F27F0C !important; }
+
+.izzy-ui-2026 .cajas-list-toolbar {
+    gap: 10px !important;
+    margin-bottom: 12px !important;
+}
+
+.izzy-ui-2026 .cajas-list-actions .btn {
+    height: 34px !important;
+    min-height: 34px !important;
+    min-width: 0 !important;
+    padding: 5px 10px !important;
+    border-radius: 7px !important;
+    font-size: 11.5px !important;
+}
+
+.izzy-ui-2026 .cajas-view-switch {
+    background: #F4F8FA !important;
+    border-color: #D6E1E6 !important;
+}
+
+.izzy-ui-2026 .cajas-view-btn.active {
+    background: #429EBD !important;
+    color: #fff !important;
+}
+
+.izzy-ui-2026 .cajas-search-box .input-group-text {
+    background: #F4F8FA !important;
+    color: #429EBD !important;
+}
+
+.izzy-ui-2026 .cajas-detail-header {
+    background: #053F5C !important;
+}
+
+.izzy-ui-2026 .cajas-detail-row,
+.izzy-ui-2026 .cajas-mini-card {
+    border-color: #DCE6EB !important;
+    border-top-color: #429EBD !important;
+    box-shadow: 0 2px 8px rgba(5,63,92,.045) !important;
+}
+
+.izzy-ui-2026 .cajas-pagination button.active {
+    background: #429EBD !important;
+    border-color: #429EBD !important;
+}
