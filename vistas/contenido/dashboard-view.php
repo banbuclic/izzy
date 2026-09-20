@@ -10,6 +10,47 @@
             </li>
         </ol>
     </div>
+
+    <!-- Flujo diario: accesos existentes reorganizados -->
+    <div class="dashboard-workflow mb-4" aria-label="Flujo diario">
+        <div class="dashboard-workflow-copy">
+            <span class="dashboard-workflow-eyebrow">Operación diaria</span>
+            <strong>Empieza por lo que haces primero</strong>
+            <small>Caja, facturación y seguimiento de cuentas por cobrar en un solo flujo.</small>
+        </div>
+
+        <div class="dashboard-workflow-actions">
+            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>cajas/"
+               class="dashboard-workflow-action cajas"
+               style="display:none">
+                <span class="dashboard-workflow-action-icon"><i class="fas fa-cash-register"></i></span>
+                <span>
+                    <small>01</small>
+                    <strong>Aperturar caja</strong>
+                </span>
+            </a>
+
+            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>facturas/"
+               class="dashboard-workflow-action dashboard-workflow-action-primary facturas"
+               style="display:none">
+                <span class="dashboard-workflow-action-icon"><i class="fas fa-file-invoice-dollar"></i></span>
+                <span>
+                    <small>02</small>
+                    <strong>Facturar</strong>
+                </span>
+            </a>
+
+            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>cobrarClientes/"
+               class="dashboard-workflow-action cobrarClientes"
+               style="display:none">
+                <span class="dashboard-workflow-action-icon"><i class="fas fa-hand-holding-usd"></i></span>
+                <span>
+                    <small>03</small>
+                    <strong>Facturas pendientes</strong>
+                </span>
+            </a>
+        </div>
+    </div>
         
     <!-- Cards de Métricas - Versión Mejorada -->
     <div class="card mb-4 dashboard-section-card" id="dashboard_kpis_card">
