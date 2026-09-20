@@ -12,16 +12,16 @@
     </div>
 
 
-<!-- Cards de Métricas - Versión Mejorada -->
+<!-- Resumen principal -->
     <div class="card mb-4 dashboard-section-card" id="dashboard_kpis_card">
         <div class="card-header dashboard-section-header">
             <div class="dashboard-section-heading">
                 <div class="dashboard-section-icon">
-                    <i class="fas fa-chart-pie"></i>
+                    <?php echo izzyTablerIcon('layout-dashboard', 'izzy-icon-md'); ?>
                 </div>
                 <div>
-                    <strong>Resumen del Dashboard</strong>
-                    <small class="d-block text-muted mt-1">Indicadores principales de clientes, proveedores, facturación y compras.</small>
+                    <strong>Resumen del Sistema</strong>
+                    <small class="d-block text-muted mt-1">Proveedores y clientes como cantidades; ventas y compras como valores en lempiras.</small>
                 </div>
             </div>
 
@@ -37,103 +37,89 @@
         </div>
 
         <div class="card-body dashboard-section-body" id="dashboard_kpis_body">
-            <div class="row">
-        <!-- Card Clientes -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>clientes/" class="card-link">
-                <div class="card dashboard-card bg-gradient-primary hover-effect">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="card-subtitle mb-2">Total Clientes</h6>
-                                <h2 class="mb-0" id="main_clientes">0</h2>
-                            </div>
-                            <div class="icon-circle">
-                                <i class="fas fa-user-tie"></i>
+            <div class="row dashboard-kpi-row">
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>proveedores/" class="card-link">
+                        <div class="card dashboard-card dashboard-card-proveedores hover-effect">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">Proveedores</h6>
+                                        <h2 class="mb-0" id="main_proveedores">0</h2>
+                                    </div>
+                                    <div class="icon-circle"><?php echo izzyTablerIcon('truck-delivery', 'izzy-icon-lg'); ?></div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="card-footer-text"><?php echo izzyTablerIcon('info-circle', 'mr-1'); ?> Proveedores registrados</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="mt-3">
-                            <span class="card-footer-text">
-                                <i class="fas fa-info-circle mr-1"></i> Nuestros Clientes
-                            </span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        
-        <!-- Card Proveedores -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>proveedores/" class="card-link">
-                <div class="card dashboard-card bg-gradient-success hover-effect">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="card-subtitle mb-2">Total Proveedores</h6>
-                                <h2 class="mb-0" id="main_proveedores">0</h2>
-                            </div>
-                            <div class="icon-circle">
-                                <i class="fas fa-user-alt"></i>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>clientes/" class="card-link">
+                        <div class="card dashboard-card dashboard-card-clientes hover-effect">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">Clientes</h6>
+                                        <h2 class="mb-0" id="main_clientes">0</h2>
+                                    </div>
+                                    <div class="icon-circle"><?php echo izzyTablerIcon('users', 'izzy-icon-lg'); ?></div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="card-footer-text"><?php echo izzyTablerIcon('info-circle', 'mr-1'); ?> Clientes registrados</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="mt-3">
-                            <span class="card-footer-text">
-                                <i class="fas fa-info-circle mr-1"></i> Nuestros Proveedores
-                            </span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        
-        <!-- Card Facturas -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteVentas/" class="card-link">
-                <div class="card dashboard-card bg-gradient-warning hover-effect">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="card-subtitle mb-2">Total Facturas</h6>
-                                <h2 class="mb-0" id="main_facturas">0</h2>
-                            </div>
-                            <div class="icon-circle">
-                                <i class="fas fa-file-invoice"></i>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteVentas/" class="card-link">
+                        <div class="card dashboard-card dashboard-card-money dashboard-card-ventas hover-effect">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">Total de Ventas</h6>
+                                        <h2 class="mb-0" id="main_facturas">L. 0.00</h2>
+                                    </div>
+                                    <div class="icon-circle"><?php echo izzyTablerIcon('shopping-cart', 'izzy-icon-lg'); ?></div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="card-footer-text">
+                                        <?php echo izzyTablerIcon('calendar', 'mr-1'); ?>
+                                        <span id="mes_factura"><?= date('F Y'); ?></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="mt-3">
-                            <span class="card-footer-text" id="mes_factura">
-                                <i class="fas fa-calendar-alt mr-1"></i> <?= date('F Y'); ?>
-                            </span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        
-        <!-- Card Compras -->
-        <div class="col-xl-3 col-md-6 mb-4">
-            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteCompras/" class="card-link">
-                <div class="card dashboard-card bg-gradient-danger hover-effect">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <h6 class="card-subtitle mb-2">Total Compras</h6>
-                                <h2 class="mb-0" id="main_compras">0</h2>
-                            </div>
-                            <div class="icon-circle">
-                                <i class="fas fa-shopping-cart"></i>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteCompras/" class="card-link">
+                        <div class="card dashboard-card dashboard-card-money dashboard-card-compras hover-effect">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-subtitle mb-2">Total de Compras</h6>
+                                        <h2 class="mb-0" id="main_compras">L. 0.00</h2>
+                                    </div>
+                                    <div class="icon-circle"><?php echo izzyTablerIcon('shopping-bag', 'izzy-icon-lg'); ?></div>
+                                </div>
+                                <div class="mt-3">
+                                    <span class="card-footer-text">
+                                        <?php echo izzyTablerIcon('calendar', 'mr-1'); ?>
+                                        <span id="mes_compra"><?= date('F Y'); ?></span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class="mt-3">
-                            <span class="card-footer-text" id="mes_compra">
-                                <i class="fas fa-calendar-alt mr-1"></i> <?= date('F Y'); ?>
-                            </span>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-    </div>
+            </div>
         </div>
     </div>
 
