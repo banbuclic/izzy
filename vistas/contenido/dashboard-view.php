@@ -5,54 +5,14 @@
     <div class="breadcrumb-container">
         <ol class="breadcrumb-harmony">
             <li class="breadcrumb-item active">
-                <i class="fas fa-home breadcrumb-icon"></i>
+                <?php echo izzyTablerIcon('home', 'breadcrumb-icon'); ?>
                 <span>Dashboard</span>
             </li>
         </ol>
     </div>
 
-    <!-- Flujo diario: accesos existentes reorganizados -->
-    <div class="dashboard-workflow mb-4" aria-label="Flujo diario">
-        <div class="dashboard-workflow-copy">
-            <span class="dashboard-workflow-eyebrow">Operación diaria</span>
-            <strong>Empieza por lo que haces primero</strong>
-            <small>Caja, facturación y seguimiento de cuentas por cobrar en un solo flujo.</small>
-        </div>
 
-        <div class="dashboard-workflow-actions">
-            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>cajas/"
-               class="dashboard-workflow-action cajas"
-               style="display:none">
-                <span class="dashboard-workflow-action-icon"><i class="fas fa-cash-register"></i></span>
-                <span>
-                    <small>01</small>
-                    <strong>Aperturar caja</strong>
-                </span>
-            </a>
-
-            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>facturas/"
-               class="dashboard-workflow-action dashboard-workflow-action-primary facturas"
-               style="display:none">
-                <span class="dashboard-workflow-action-icon"><i class="fas fa-file-invoice-dollar"></i></span>
-                <span>
-                    <small>02</small>
-                    <strong>Facturar</strong>
-                </span>
-            </a>
-
-            <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>cobrarClientes/"
-               class="dashboard-workflow-action cobrarClientes"
-               style="display:none">
-                <span class="dashboard-workflow-action-icon"><i class="fas fa-hand-holding-usd"></i></span>
-                <span>
-                    <small>03</small>
-                    <strong>Facturas pendientes</strong>
-                </span>
-            </a>
-        </div>
-    </div>
-        
-    <!-- Cards de Métricas - Versión Mejorada -->
+<!-- Cards de Métricas - Versión Mejorada -->
     <div class="card mb-4 dashboard-section-card" id="dashboard_kpis_card">
         <div class="card-header dashboard-section-header">
             <div class="dashboard-section-heading">
@@ -71,7 +31,7 @@
                     data-target="#dashboard_kpis_body"
                     data-storage-key="izzy_dashboard_kpis_visible"
                     aria-expanded="true">
-                <i class="fas fa-chevron-up mr-1"></i>
+                <?php echo izzyTablerIcon('chevron-up', 'dashboard-toggle-icon mr-1'); ?>
                 <span>Ocultar</span>
             </button>
         </div>
@@ -177,16 +137,14 @@
         </div>
     </div>
 
-	<!-- Sección de Gráficos Mejorada -->
+    <!-- Ventas y Compras -->
     <div class="card mb-4 dashboard-section-card" id="dashboard_graficos_card">
         <div class="card-header dashboard-section-header">
             <div class="dashboard-section-heading">
-                <div class="dashboard-section-icon">
-                    <i class="fas fa-chart-bar"></i>
-                </div>
+                <div class="dashboard-section-icon"><?php echo izzyTablerIcon('chart-bar', 'izzy-icon-md'); ?></div>
                 <div>
-                    <strong>Gráficos del Dashboard</strong>
-                    <small class="d-block text-muted mt-1">Ventas, compras y productos más vendidos.</small>
+                    <strong>Ventas y Compras</strong>
+                    <small class="d-block text-muted mt-1">Comportamiento anual de ventas y compras con datos reales del sistema.</small>
                 </div>
             </div>
 
@@ -196,135 +154,136 @@
                     data-target="#dashboard_graficos_body"
                     data-storage-key="izzy_dashboard_graficos_visible"
                     aria-expanded="true">
-                <i class="fas fa-chevron-up mr-1"></i>
+                <?php echo izzyTablerIcon('chevron-up', 'dashboard-toggle-icon mr-1'); ?>
                 <span>Ocultar</span>
             </button>
         </div>
 
         <div class="card-body dashboard-section-body" id="dashboard_graficos_body">
-	        <div class="row">
-		<!-- Gráfico Ventas - Versión Premium -->
-		<div class="col-xl-6 col-md-12 mb-4">
-			<div class="chart-card h-100">
-				<div class="chart-header">
-					<h3 class="chart-title">
-						<i class="fas fa-chart-bar"></i>
-						Reporte Ventas
-					</h3>
-					<div class="chart-actions">
-						<div class="year-selector btn-group btn-group-sm">
-							<button class="btn btn-year-ventas active" data-year="<?php echo date("Y"); ?>">
-								<?php echo date("Y"); ?>
-							</button>
-							<button class="btn btn-year-ventas" data-year="<?php echo date("Y")-1; ?>">
-								<?php echo date("Y")-1; ?>
-							</button>
-						</div>
-						<a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteVentas/" 
-						class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
-							<i class="fas fa-arrow-right"></i>
-						</a>
-						<button class="chart-btn download-ventas" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
-							<i class="fas fa-download"></i>
-						</button>
-                        <button type="button"
-                                class="chart-btn dashboard-chart-toggle"
-                                data-target="#dashboard_chart_ventas_body"
-                                data-storage-key="izzy_dashboard_chart_ventas_visible"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Ocultar gráfico"
-                                aria-expanded="true">
-                            <i class="fas fa-chevron-up"></i>
-                        </button>
-					</div>
-				</div>
-                <div id="dashboard_chart_ventas_body" class="dashboard-chart-body">
-				    <div class="chart-container bar-chart dashboard-chart-scroll">
-                        <div class="dashboard-chart-canvas">
-                            <canvas id="graphVentas" height="250"></canvas>
+            <div class="row">
+                <div class="col-xl-6 col-md-12 mb-4">
+                    <div class="chart-card h-100 dashboard-main-chart-card">
+                        <div class="chart-header">
+                            <h3 class="chart-title">
+                                <?php echo izzyTablerIcon('shopping-cart', 'izzy-icon-md'); ?>
+                                Gráfica de Ventas
+                            </h3>
+                            <div class="chart-actions">
+                                <div class="year-selector btn-group btn-group-sm">
+                                    <button class="btn btn-year-ventas active" data-year="<?php echo date("Y"); ?>"><?php echo date("Y"); ?></button>
+                                    <button class="btn btn-year-ventas" data-year="<?php echo date("Y")-1; ?>"><?php echo date("Y")-1; ?></button>
+                                </div>
+                                <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteVentas/"
+                                   class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
+                                    <?php echo izzyTablerIcon('arrow-right'); ?>
+                                </a>
+                                <button class="chart-btn download-ventas" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
+                                    <?php echo izzyTablerIcon('download'); ?>
+                                </button>
+                                <button type="button"
+                                        class="chart-btn dashboard-chart-toggle"
+                                        data-target="#dashboard_chart_ventas_body"
+                                        data-storage-key="izzy_dashboard_chart_ventas_visible"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Ocultar gráfico"
+                                        aria-expanded="true">
+                                    <?php echo izzyTablerIcon('chevron-up', 'dashboard-toggle-icon'); ?>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="dashboard_chart_ventas_body" class="dashboard-chart-body">
+                            <div class="chart-container bar-chart dashboard-chart-scroll">
+                                <div class="dashboard-chart-canvas"><canvas id="graphVentas" height="250"></canvas></div>
+                            </div>
+                            <div class="chart-legend" id="ventas-legend"></div>
                         </div>
                     </div>
-				    <div class="chart-legend" id="ventas-legend">
-					    <!-- Leyenda generada dinámicamente -->
-				    </div>
                 </div>
-			</div>
-		</div>
-		
-		<!-- Gráfico Compras - Versión Premium -->
-		<div class="col-xl-6 col-md-12 mb-4">
-			<div class="chart-card h-100">
-				<div class="chart-header">
-					<h3 class="chart-title">
-						<i class="fas fa-chart-bar"></i>
-						Reporte Compras
-					</h3>
-					<div class="chart-actions">
-						<div class="year-selector btn-group btn-group-sm">
-							<button class="btn btn-year-compras active" data-year="<?php echo date("Y"); ?>">
-								<?php echo date("Y"); ?>
-							</button>
-							<button class="btn btn-year-compras" data-year="<?php echo date("Y")-1; ?>">
-								<?php echo date("Y")-1; ?>
-							</button>
-						</div>
-						<a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteCompras/" 
-						class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
-							<i class="fas fa-arrow-right"></i>
-						</a>
-						<button class="chart-btn download-compras" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
-							<i class="fas fa-download"></i>
-						</button>
-                        <button type="button"
-                                class="chart-btn dashboard-chart-toggle"
-                                data-target="#dashboard_chart_compras_body"
-                                data-storage-key="izzy_dashboard_chart_compras_visible"
-                                data-toggle="tooltip"
-                                data-placement="top"
-                                title="Ocultar gráfico"
-                                aria-expanded="true">
-                            <i class="fas fa-chevron-up"></i>
-                        </button>
-					</div>
-				</div>
-                <div id="dashboard_chart_compras_body" class="dashboard-chart-body">
-				    <div class="chart-container bar-chart dashboard-chart-scroll">
-                        <div class="dashboard-chart-canvas">
-                            <canvas id="graphCompras" height="250"></canvas>
+
+                <div class="col-xl-6 col-md-12 mb-4">
+                    <div class="chart-card h-100 dashboard-main-chart-card dashboard-purchases-chart">
+                        <div class="chart-header">
+                            <h3 class="chart-title">
+                                <?php echo izzyTablerIcon('shopping-bag', 'izzy-icon-md'); ?>
+                                Gráfica de Compras
+                            </h3>
+                            <div class="chart-actions">
+                                <div class="year-selector btn-group btn-group-sm">
+                                    <button class="btn btn-year-compras active" data-year="<?php echo date("Y"); ?>"><?php echo date("Y"); ?></button>
+                                    <button class="btn btn-year-compras" data-year="<?php echo date("Y")-1; ?>"><?php echo date("Y")-1; ?></button>
+                                </div>
+                                <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteCompras/"
+                                   class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
+                                    <?php echo izzyTablerIcon('arrow-right'); ?>
+                                </a>
+                                <button class="chart-btn download-compras" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
+                                    <?php echo izzyTablerIcon('download'); ?>
+                                </button>
+                                <button type="button"
+                                        class="chart-btn dashboard-chart-toggle"
+                                        data-target="#dashboard_chart_compras_body"
+                                        data-storage-key="izzy_dashboard_chart_compras_visible"
+                                        data-toggle="tooltip"
+                                        data-placement="top"
+                                        title="Ocultar gráfico"
+                                        aria-expanded="true">
+                                    <?php echo izzyTablerIcon('chevron-up', 'dashboard-toggle-icon'); ?>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="dashboard_chart_compras_body" class="dashboard-chart-body">
+                            <div class="chart-container bar-chart dashboard-chart-scroll">
+                                <div class="dashboard-chart-canvas"><canvas id="graphCompras" height="250"></canvas></div>
+                            </div>
+                            <div class="chart-legend" id="compras-legend"></div>
                         </div>
                     </div>
-				    <div class="chart-legend" id="compras-legend">
-					    <!-- Leyenda generada dinámicamente -->
-				    </div>
                 </div>
-			</div>
-		</div>
-		
-		<!-- Gráfico Top Productos - Versión Premium -->
-		<div class="col-12 mb-4">
-			<div class="chart-card">
-				<div class="chart-header">
-					<h3 class="chart-title">
-						<i class="fas fa-star"></i>
-						Top 5 Productos Más Vendidos en 3 Meses
-					</h3>
-					<div class="chart-actions">
-						<div class="year-selector btn-group btn-group-sm">
-							<button class="btn btn-year-productos active" data-months="3">
-								Últimos 3 Meses
-							</button>
-							<button class="btn btn-year-productos" data-months="6">
-								Últimos 6 Meses
-							</button>
-						</div>
-						<a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>transferencia/" 
-						class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
-							<i class="fas fa-arrow-right"></i>
-						</a>
-						<button class="chart-btn download-top-productos" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
-							<i class="fas fa-download"></i>
-						</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Se conserva la funcionalidad existente de Top Productos -->
+    <div class="card mb-4 dashboard-section-card" id="dashboard_productos_card">
+        <div class="card-header dashboard-section-header">
+            <div class="dashboard-section-heading">
+                <div class="dashboard-section-icon"><?php echo izzyTablerIcon('star', 'izzy-icon-md'); ?></div>
+                <div>
+                    <strong>Productos más vendidos</strong>
+                    <small class="d-block text-muted mt-1">Top de productos por los últimos 3 o 6 meses.</small>
+                </div>
+            </div>
+            <button type="button"
+                    class="btn btn-secondary dashboard-toggle-btn"
+                    id="btn_toggle_dashboard_productos"
+                    data-target="#dashboard_productos_body"
+                    data-storage-key="izzy_dashboard_productos_visible"
+                    aria-expanded="true">
+                <?php echo izzyTablerIcon('chevron-up', 'dashboard-toggle-icon mr-1'); ?>
+                <span>Ocultar</span>
+            </button>
+        </div>
+
+        <div class="card-body dashboard-section-body" id="dashboard_productos_body">
+            <div class="chart-card">
+                <div class="chart-header">
+                    <h3 class="chart-title">
+                        <?php echo izzyTablerIcon('star', 'izzy-icon-md'); ?>
+                        Top 5 Productos Más Vendidos
+                    </h3>
+                    <div class="chart-actions">
+                        <div class="year-selector btn-group btn-group-sm">
+                            <button class="btn btn-year-productos active" data-months="3">Últimos 3 Meses</button>
+                            <button class="btn btn-year-productos" data-months="6">Últimos 6 Meses</button>
+                        </div>
+                        <a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>transferencia/"
+                           class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
+                            <?php echo izzyTablerIcon('arrow-right'); ?>
+                        </a>
+                        <button class="chart-btn download-top-productos" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
+                            <?php echo izzyTablerIcon('download'); ?>
+                        </button>
                         <button type="button"
                                 class="chart-btn dashboard-chart-toggle"
                                 data-target="#dashboard_chart_productos_body"
@@ -333,24 +292,17 @@
                                 data-placement="top"
                                 title="Ocultar gráfico"
                                 aria-expanded="true">
-                            <i class="fas fa-chevron-up"></i>
+                            <?php echo izzyTablerIcon('chevron-up', 'dashboard-toggle-icon'); ?>
                         </button>
-					</div>
-				</div>
-                <div id="dashboard_chart_productos_body" class="dashboard-chart-body">
-				    <div class="chart-container bar-chart dashboard-chart-scroll">
-                        <div class="dashboard-chart-canvas">
-                            <canvas id="graphTopProductosporAno" height="120"></canvas>
-                        </div>
                     </div>
-				    <div class="chart-legend" id="top-products-legend">
-					    <!-- La leyenda se generará dinámicamente con JavaScript -->
-				    </div>
                 </div>
-			</div>
-		</div>
-
-	        </div>
+                <div id="dashboard_chart_productos_body" class="dashboard-chart-body">
+                    <div class="chart-container bar-chart dashboard-chart-scroll">
+                        <div class="dashboard-chart-canvas"><canvas id="graphTopProductosporAno" height="120"></canvas></div>
+                    </div>
+                    <div class="chart-legend" id="top-products-legend"></div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -361,7 +313,7 @@
                 <div class="card-header dashboard-fiscales-header">
                     <div class="dashboard-fiscales-heading">
                         <div class="dashboard-fiscales-heading-icon">
-                            <i class="fas fa-file-invoice-dollar"></i>
+                            <?php echo izzyTablerIcon('file-invoice'); ?>
                         </div>
                         <div>
                             <strong>Documentos Fiscales</strong>
@@ -378,7 +330,7 @@
                            data-placement="top"
                            title="Ver secuencias">
                             <span>Ver secuencias</span>
-                            <i class="fas fa-arrow-right"></i>
+                            <?php echo izzyTablerIcon('arrow-right'); ?>
                         </a>
 
                         <button type="button"
@@ -387,7 +339,7 @@
                                 data-target="#dashboard_fiscales_body"
                                 data-storage-key="izzy_dashboard_fiscales_visible"
                                 aria-expanded="true">
-                            <i class="fas fa-chevron-up mr-1"></i>
+                            <?php echo izzyTablerIcon('chevron-up', 'dashboard-toggle-icon mr-1'); ?>
                             <span>Ocultar</span>
                         </button>
                     </div>
@@ -398,13 +350,13 @@
                     <div class="dashboard-fiscales-toolbar">
                         <div class="dashboard-fiscales-actions">
                             <button type="button" class="btn btn-secondary table_actualizar ocultar" id="btn_dashboard_fiscales_actualizar">
-                                <i class="fas fa-sync-alt mr-1"></i> Actualizar
+                                <?php echo izzyTablerIcon('refresh', 'mr-1'); ?> Actualizar
                             </button>
                             <button type="button" class="btn btn-success table_reportes ocultar" id="btn_dashboard_fiscales_excel">
-                                <i class="fas fa-file-excel mr-1"></i> Excel
+                                <?php echo izzyTablerIcon('file-spreadsheet', 'mr-1'); ?> Excel
                             </button>
                             <button type="button" class="btn btn-danger table_reportes ocultar" id="btn_dashboard_fiscales_pdf">
-                                <i class="fas fa-file-pdf mr-1"></i> PDF
+                                <?php echo izzyTablerIcon('file-type-pdf', 'mr-1'); ?> PDF
                             </button>
                         </div>
 
@@ -429,7 +381,7 @@
                                         data-view="detalle"
                                         title="Vista detalle"
                                         aria-pressed="true">
-                                    <i class="fas fa-list-ul"></i>
+                                    <?php echo izzyTablerIcon('list'); ?>
                                     <span>Detalle</span>
                                 </button>
 
@@ -438,7 +390,7 @@
                                         data-view="miniatura"
                                         title="Vista miniatura"
                                         aria-pressed="false">
-                                    <i class="fas fa-th-large"></i>
+                                    <?php echo izzyTablerIcon('layout-grid'); ?>
                                     <span>Miniatura</span>
                                 </button>
                             </div>
@@ -447,7 +399,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <i class="fas fa-search"></i>
+                                            <?php echo izzyTablerIcon('search'); ?>
                                         </span>
                                     </div>
                                     <input type="search"
@@ -460,7 +412,7 @@
                                             class="dashboard-fiscales-search-clear"
                                             aria-label="Limpiar búsqueda"
                                             title="Limpiar búsqueda">
-                                        <i class="fas fa-times"></i>
+                                        <?php echo izzyTablerIcon('x'); ?>
                                     </button>
                                 </div>
                             </div>
@@ -468,12 +420,12 @@
                     </div>
 
                     <div id="dashboard_fiscales_loading" class="dashboard-fiscales-state d-none" role="status" aria-live="polite">
-                        <i class="fas fa-spinner fa-spin"></i>
+                        <?php echo izzyTablerIcon('loader-2', 'izzy-icon-spin'); ?>
                         <span>Cargando documentos fiscales...</span>
                     </div>
 
                     <div id="dashboard_fiscales_empty" class="dashboard-fiscales-state d-none" role="status" aria-live="polite">
-                        <i class="fas fa-inbox"></i>
+                        <?php echo izzyTablerIcon('inbox'); ?>
                         <div>
                             <strong>No se encontraron documentos fiscales</strong>
                             <small>No hay secuencias disponibles para mostrar.</small>
