@@ -696,10 +696,10 @@ function showVentasAnuales(year) {
                     labels: mes,
                     datasets: [{
                         label: 'Ventas ' + year,
-                        backgroundColor: '#4e73df',
-                        borderColor: '#3a56b5',
-                        hoverBackgroundColor: '#3a56b5',
-                        hoverBorderColor: '#2a3f8a',
+                        backgroundColor: '#429EBD',
+                        borderColor: '#327E9C',
+                        hoverBackgroundColor: '#327E9C',
+                        hoverBorderColor: '#286A84',
                         borderWidth: 1,
                         borderRadius: 6,
                         data: total
@@ -843,10 +843,10 @@ function showComprasAnuales(year) {
                     labels: mes,
                     datasets: [{
                         label: 'Compras ' + year,
-                        backgroundColor: '#1abc9c',
-                        borderColor: '#16a085',
-                        hoverBackgroundColor: '#16a085',
-                        hoverBorderColor: '#1abc9c',
+                        backgroundColor: '#F7AD19',
+                        borderColor: '#D38B00',
+                        hoverBackgroundColor: '#D38B00',
+                        hoverBorderColor: '#B87700',
                         borderWidth: 1,
                         borderRadius: 6,
                         data: total
@@ -2733,12 +2733,17 @@ function dashboardStorageSet(key, visible) {
 }
 
 function dashboardActualizarBotonSeccion($button, visible) {
-    var $icon = $button.find('i').first();
+    var $svgIcon = $button.find('.dashboard-toggle-icon').first();
+    var $legacyIcon = $button.find('i').first();
     var $text = $button.find('span').first();
 
-    $icon
-        .removeClass('fa-chevron-down fa-chevron-up')
-        .addClass(visible ? 'fa-chevron-up' : 'fa-chevron-down');
+    if ($svgIcon.length) {
+        $svgIcon.toggleClass('is-down', !visible);
+    } else {
+        $legacyIcon
+            .removeClass('fa-chevron-down fa-chevron-up')
+            .addClass(visible ? 'fa-chevron-up' : 'fa-chevron-down');
+    }
 
     if ($text.length) {
         $text.text(visible ? 'Ocultar' : 'Mostrar');
@@ -2748,11 +2753,16 @@ function dashboardActualizarBotonSeccion($button, visible) {
 }
 
 function dashboardActualizarBotonGrafico($button, visible) {
-    var $icon = $button.find('i').first();
+    var $svgIcon = $button.find('.dashboard-toggle-icon').first();
+    var $legacyIcon = $button.find('i').first();
 
-    $icon
-        .removeClass('fa-chevron-down fa-chevron-up')
-        .addClass(visible ? 'fa-chevron-up' : 'fa-chevron-down');
+    if ($svgIcon.length) {
+        $svgIcon.toggleClass('is-down', !visible);
+    } else {
+        $legacyIcon
+            .removeClass('fa-chevron-down fa-chevron-up')
+            .addClass(visible ? 'fa-chevron-up' : 'fa-chevron-down');
+    }
 
     $button.attr({
         'aria-expanded': visible ? 'true' : 'false',
