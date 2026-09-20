@@ -1863,3 +1863,95 @@
         transform: none;
     }
 }
+
+
+/* ============================================================
+   DASHBOARD APROBADO TABLER 2026
+   ============================================================ */
+.izzy-ui-2026 .dashboard-kpi-row { margin-bottom: -1rem; }
+
+.izzy-ui-2026 .dashboard-card {
+    min-height: 138px !important;
+}
+
+.izzy-ui-2026 .dashboard-card-money h2 {
+    font-size: clamp(1.22rem, 1.55vw, 1.55rem) !important;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+}
+
+.izzy-ui-2026 .dashboard-card .icon-circle .izzy-tabler-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.izzy-ui-2026 .dashboard-card-proveedores { border-left: 4px solid #429EBD !important; }
+.izzy-ui-2026 .dashboard-card-clientes { border-left: 4px solid #9FE7F5 !important; }
+.izzy-ui-2026 .dashboard-card-ventas { border-left: 4px solid #F7AD19 !important; }
+.izzy-ui-2026 .dashboard-card-compras { border-left: 4px solid #F27F0C !important; }
+
+.izzy-ui-2026 .dashboard-section-icon .izzy-tabler-icon,
+.izzy-ui-2026 .dashboard-fiscales-heading-icon .izzy-tabler-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.izzy-ui-2026 .chart-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.izzy-ui-2026 .chart-title .izzy-tabler-icon {
+    width: 18px;
+    height: 18px;
+    color: #429EBD;
+}
+
+.izzy-ui-2026 .dashboard-purchases-chart .chart-title .izzy-tabler-icon {
+    color: #B77A00;
+}
+
+.izzy-ui-2026 .chart-btn .izzy-tabler-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.izzy-ui-2026 .dashboard-toggle-btn .dashboard-toggle-icon,
+.izzy-ui-2026 .dashboard-chart-toggle .dashboard-toggle-icon {
+    width: 15px;
+    height: 15px;
+    transition: transform .18s ease;
+}
+
+.izzy-ui-2026 .dashboard-toggle-btn .dashboard-toggle-icon.is-down,
+.izzy-ui-2026 .dashboard-chart-toggle .dashboard-toggle-icon.is-down {
+    transform: rotate(180deg);
+}
+
+.izzy-ui-2026 .dashboard-main-chart-card {
+    min-height: 390px;
+}
+
+.izzy-ui-2026 #dashboard_graficos_body > .row {
+    margin-bottom: -1rem;
+}
+
+.izzy-ui-2026 .dashboard-fiscales-actions .izzy-tabler-icon,
+.izzy-ui-2026 .dashboard-fiscales-view-btn .izzy-tabler-icon,
+.izzy-ui-2026 .dashboard-fiscales-link .izzy-tabler-icon,
+.izzy-ui-2026 .dashboard-fiscales-search .izzy-tabler-icon {
+    width: 16px;
+    height: 16px;
+}
+
+@media (max-width: 767.98px) {
+    .izzy-ui-2026 .dashboard-card-money h2 {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .izzy-ui-2026 .dashboard-main-chart-card {
+        min-height: 340px;
+    }
+}
