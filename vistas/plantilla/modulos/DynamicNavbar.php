@@ -110,6 +110,127 @@ class DynamicNavbar {
         return true;
     }
     
+    /**
+     * Orden visual preferido de IZZY.
+     * Solo reordena la presentación; no modifica IDs, rutas ni permisos.
+     */
+    private function ordenarPorPrioridad(array $items, array $prioridades) {
+        $posicionOriginal = [];
+        foreach ($items as $index => $item) {
+            $posicionOriginal[(string)$index] = $index;
+            $items[$index]['__orden_original'] = $index;
+        }
+
+        usort($items, function ($a, $b) use ($prioridades) {
+            $pa = $prioridades[$a['name']] ?? 900;
+            $pb = $prioridades[$b['name']] ?? 900;
+
+            if ($pa === $pb) {
+                return ($a['__orden_original'] ?? 0) <=> ($b['__orden_original'] ?? 0);
+            }
+
+            return $pa <=> $pb;
+        });
+
+        foreach ($items as &$item) {
+            unset($item['__orden_original']);
+        }
+        unset($item);
+
+        return $items;
+    }
+
+    private function prioridadesMenu() {
+        return [
+            'dashboard' => 10,
+            'ventas' => 20,
+            'compras' => 30,
+            'almacen' => 40,
+            'contabilidad' => 50,
+            'reportes' => 60,
+            'recursosHumanos' => 70,
+            'configuracion' => 80,
+        ];
+    }
+
+    private function prioridadesSubmenu($menuName) {
+        $map = [
+            'ventas' => [
+                'cajas' => 10,
+                'facturas' => 20,
+                'clientes' => 30,
+                'cotizacion' => 40,
+            ],
+            'compras' => [
+                'proveedores' => 10,
+                'facturaCompras' => 20,
+            ],
+            'almacen' => [
+                'productos' => 10,
+                'inventario' => 20,
+                'transferencia' => 30,
+            ],
+            'contabilidad' => [
+                'ingresosContabilidad' => 10,
+                'gastosContabilidad' => 20,
+                'cuentasContabilidad' => 30,
+                'movimientosContabilidad' => 40,
+                'chequesContabilidad' => 50,
+                'confBancos' => 60,
+                'confTipoPago' => 70,
+                'confImpuestos' => 80,
+                'confCtaContabilidad' => 90,
+            ],
+            'reportes' => [
+                'reporte_ventas' => 10,
+                'reporte_compras' => 20,
+                'reporte_historial' => 30,
+            ],
+            'recursosHumanos' => [
+                'colaboradores' => 10,
+                'contrato' => 20,
+                'nomina' => 30,
+                'asistencia' => 40,
+            ],
+            'configuracion' => [
+                'empresa' => 10,
+                'secuencia' => 20,
+                'confAlmacen' => 30,
+                'confUbicacion' => 40,
+                'confMedida' => 50,
+                'confCategoria' => 60,
+                'confImpresora' => 70,
+                'confEmail' => 80,
+                'puestos' => 90,
+                'users' => 100,
+                'tipoUser' => 110,
+                'privilegio' => 120,
+            ],
+        ];
+
+        return $map[$menuName] ?? [];
+    }
+
+    private function prioridadesSubmenuNivel2($submenuName) {
+        $map = [
+            'reporte_ventas' => [
+                'reporteVentas' => 10,
+                'cobrarClientes' => 20,
+                'reporteCotizacion' => 30,
+            ],
+            'reporte_compras' => [
+                'reporteCompras' => 10,
+                'pagarProveedores' => 20,
+            ],
+            'reporte_historial' => [
+                'historialAccesos' => 10,
+                'bitacora' => 20,
+            ],
+        ];
+
+        return $map[$submenuName] ?? [];
+    }
+
     // Generar el HTML del navbar dinámicamente
     public function generarNavbar() {
         $html = '<nav class="sb-sidenav accordion bg-color-navarlateral nav-loading" id="sidenavAccordion">
@@ -118,7 +239,7 @@ class DynamicNavbar {
 
         
         // Obtener todos los menús principales
-        $menus = $this->getMenus();
+        $menus = $this->ordenarPorPrioridad($this->getMenus(), $this->prioridadesMenu());
         
         foreach ($menus as $menu) {
             $menu_id = $menu['menu_id'];
@@ -128,7 +249,10 @@ class DynamicNavbar {
             $display = $this->tienePermiso($menu_id, 'menu') ? '' : 'style="display:none"';
             
             // Obtener los submenús de nivel 1 para este menú
-            $submenus = $this->getSubmenus($menu_id);
+            $submenus = $this->ordenarPorPrioridad(
+                $this->getSubmenus($menu_id),
+                $this->prioridadesSubmenu($menu_name)
+            );
             
             // Si no hay submenús, es un enlace directo
             if (empty($submenus)) {
@@ -157,7 +281,10 @@ class DynamicNavbar {
                     $submenu_display = $this->tienePermiso($submenu_id, 'submenu') ? '' : 'style="display:none"';
                     
                     // Obtener los submenús de nivel 2 para este submenú
-                    $submenus1 = $this->getSubmenus1($submenu_id);
+                    $submenus1 = $this->ordenarPorPrioridad(
+                        $this->getSubmenus1($submenu_id),
+                        $this->prioridadesSubmenuNivel2($submenu_name)
+                    );
                     
                     // Si no hay submenús de nivel 2, es un enlace directo
                     if (empty($submenus1)) {
