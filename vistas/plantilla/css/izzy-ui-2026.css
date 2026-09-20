@@ -453,3 +453,86 @@ body.izzy-ui-2026 .breadcrumb-harmony .breadcrumb-icon {
     transform: none;
   }
 }
+
+
+/* ============================================================
+   IZZY TABLER LOCAL + TOPBAR APROBADO
+   ============================================================ */
+.izzy-tabler-icon {
+  width: 1.15em;
+  height: 1.15em;
+  display: inline-block;
+  flex: 0 0 auto;
+  vertical-align: -0.18em;
+  overflow: visible;
+  color: currentColor;
+}
+
+.izzy-tabler-icon.izzy-icon-md { width: 20px; height: 20px; }
+.izzy-tabler-icon.izzy-icon-lg { width: 24px; height: 24px; }
+
+.izzy-icon-spin {
+  animation: izzy-tabler-spin .9s linear infinite;
+}
+
+@keyframes izzy-tabler-spin {
+  to { transform: rotate(360deg); }
+}
+
+body.izzy-ui-2026 .top-quick-nav {
+  flex: 1 1 auto;
+  min-width: 0;
+  gap: 4px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-link {
+  min-width: 0;
+  padding: 6px 7px !important;
+  font-size: 11.5px;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-link .izzy-tabler-icon {
+  width: 17px;
+  height: 17px;
+  color: #5E8293;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-primary .izzy-tabler-icon {
+  color: #fff;
+}
+
+body.izzy-ui-2026 .navbar-nav-user .izzy-tabler-icon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (min-width: 1200px) {
+  body.izzy-ui-2026 .top-quick-nav .top-quick-link {
+    width: auto !important;
+    min-width: 0 !important;
+    justify-content: flex-start !important;
+  }
+
+  body.izzy-ui-2026 .top-quick-nav .top-quick-link span {
+    display: inline !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  body.izzy-ui-2026 .top-quick-nav .top-quick-link span {
+    display: none !important;
+  }
+
+  body.izzy-ui-2026 .top-quick-nav .top-quick-link {
+    width: 34px !important;
+    min-width: 34px !important;
+    justify-content: center !important;
+    padding: 6px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .izzy-icon-spin { animation-duration: 1.8s; }
+}
