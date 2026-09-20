@@ -2,14 +2,15 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/plantilla/css/facturas.css">
 <body id="view_bill">
     <div class="container-fluid">
-        <div class="card mb-4">
-            <div class="card-header">
+        <div class="card mb-4 facturas-workspace-card">
+            <div class="card-header facturas-workspace-header">
                 <i class="fas fa-file-invoice fa-lg mr-1"></i>
                 Facturas
             </div>
-            <div class="card-body">
+            <div class="card-body facturas-workspace-body">
                 <form class="FormularioAjax" id="invoice-form" method="POST" action="" data-form="" autocomplete="off" enctype="multipart/form-data">
                     
+                    <div class="facturas-context-grid">
                     <div class="form-group row customer-bill-box-left">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="bill-header-row">
@@ -40,12 +41,14 @@
                         </div>
                     </div>
 
-                    <div class="bill">
+                    </div>
+
+                    <div class="bill facturas-operacion">
                         <!-- SECCIÓN DE BOTONES MEJORADA (SOLO REORGANIZACIÓN VISUAL) -->
                         <div class="form-group row">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <!-- Primera fila de botones principales -->
-                                <div class="d-flex flex-wrap mb-2">
+                                <div class="d-flex flex-wrap mb-2 facturas-primary-toolbar">
 
                                     <!-- Ayuda -->
                                     <button
@@ -174,7 +177,7 @@
                                 </div>
 
                                 <!-- Segunda fila de botones y controles -->
-                                <div class="d-flex flex-wrap align-items-center">
+                                <div class="d-flex flex-wrap align-items-center facturas-options-toolbar">
                                     <!-- Controles de Tipo y Proforma -->
                                     <div class="d-flex align-items-center mr-3">
                                         <label class="col-form-label mr-2 mb-0">Tipo de Factura:</label>
