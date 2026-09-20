@@ -1,0 +1,455 @@
+/* ============================================================
+   IZZY UI 2026 | REESTRUCTURA VISUAL GLOBAL
+   ------------------------------------------------------------
+   Esta capa moderniza la presentación sin cambiar lógica,
+   IDs, rutas, permisos, AJAX, formularios ni comportamiento.
+   ============================================================ */
+
+body.izzy-ui-2026 {
+  --primary: #053F5C;
+  --primary-rgb: 5, 63, 92;
+  --secondary: #429EBD;
+  --secondary-rgb: 66, 158, 189;
+  --warning: #F7AD19;
+  --danger: #F27F0C;
+  --info: #429EBD;
+
+  --izzy-sky: #9FE7F5;
+  --izzy-blue: #429EBD;
+  --izzy-navy: #053F5C;
+  --izzy-amber: #F7AD19;
+  --izzy-orange: #F27F0C;
+
+  --izzy-bg: #F4F7F9;
+  --izzy-surface: #FFFFFF;
+  --izzy-surface-soft: #F8FBFC;
+  --izzy-border: #DCE6EB;
+  --izzy-border-strong: #CCD9E0;
+  --izzy-text: #173746;
+  --izzy-muted: #71828B;
+  --izzy-radius: 12px;
+  --izzy-shadow: 0 5px 18px rgba(5, 63, 92, .065);
+  --izzy-shadow-hover: 0 10px 26px rgba(5, 63, 92, .10);
+
+  background: var(--izzy-bg);
+  color: var(--izzy-text);
+  font-family: Inter, "Segoe UI Variable", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+  letter-spacing: -.005em;
+}
+
+/* ---------- Layout ---------- */
+body.izzy-ui-2026 #layoutSidenav_content,
+body.izzy-ui-2026 #layoutSidenav_content > main {
+  background: var(--izzy-bg);
+}
+
+body.izzy-ui-2026 #layoutSidenav_content main > .container-fluid {
+  padding-left: 22px;
+  padding-right: 22px;
+}
+
+/* ---------- Topbar ---------- */
+body.izzy-ui-2026 .sb-topnav {
+  height: 60px;
+  padding: 0 18px;
+  background: #fff !important;
+  border-bottom: 1px solid var(--izzy-border);
+  box-shadow: 0 3px 14px rgba(5, 63, 92, .045);
+}
+
+body.izzy-ui-2026 .sb-topnav .navbar-brand {
+  margin-right: 12px;
+}
+
+body.izzy-ui-2026 .sb-topnav .navbar-brand .logo {
+  max-height: 34px;
+}
+
+body.izzy-ui-2026 #sidebarToggle {
+  width: 36px;
+  min-width: 36px;
+  height: 36px;
+  margin: 0 10px 0 0;
+  padding: 0;
+  border: 1px solid var(--izzy-border);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--izzy-navy) !important;
+  box-shadow: none;
+}
+
+body.izzy-ui-2026 #sidebarToggle:hover {
+  background: rgba(66, 158, 189, .08);
+  border-color: rgba(66, 158, 189, .35);
+  transform: none;
+}
+
+body.izzy-ui-2026 #sidebarToggle i {
+  color: inherit !important;
+}
+
+/* Accesos superiores compactos */
+body.izzy-ui-2026 .top-quick-nav {
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  margin-left: 2px;
+}
+
+body.izzy-ui-2026 .top-quick-nav .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-link {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 6px 9px !important;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: #4D6571 !important;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+  transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-link i {
+  margin: 0 !important;
+  color: #5E8293 !important;
+  font-size: 12px !important;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-link:hover {
+  background: #F3F8FA;
+  border-color: var(--izzy-border);
+  color: var(--izzy-navy) !important;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-link:hover i {
+  color: var(--izzy-blue) !important;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-primary {
+  background: var(--izzy-navy);
+  border-color: var(--izzy-navy);
+  color: #fff !important;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-primary i {
+  color: #fff !important;
+}
+
+body.izzy-ui-2026 .top-quick-nav .top-quick-primary:hover {
+  background: #07364D;
+  border-color: #07364D;
+  color: #fff !important;
+}
+
+/* Usuario */
+body.izzy-ui-2026 .navbar-nav-user {
+  padding-right: 0;
+}
+
+body.izzy-ui-2026 .navbar-nav-user .nav-link {
+  min-height: 36px;
+  padding: 6px 9px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  color: #405866 !important;
+}
+
+body.izzy-ui-2026 .navbar-nav-user .nav-link:hover {
+  background: #F4F8FA !important;
+  border-color: var(--izzy-border);
+  color: var(--izzy-navy) !important;
+}
+
+body.izzy-ui-2026 .navbar-nav-user .nav-link i {
+  color: var(--izzy-blue) !important;
+}
+
+/* ---------- Sidebar ---------- */
+body.izzy-ui-2026 .sb-sidenav {
+  background: var(--izzy-navy) !important;
+  color: rgba(255,255,255,.82);
+  box-shadow: 3px 0 16px rgba(5, 63, 92, .12);
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu {
+  padding-top: 10px;
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu .nav {
+  padding: 0 8px;
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu .nav-link {
+  min-height: 42px;
+  margin: 2px 0;
+  padding: 9px 11px;
+  border-radius: 8px;
+  color: rgba(255,255,255,.72) !important;
+  font-size: 13px;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu .nav-link .sb-nav-link-icon {
+  width: 22px;
+  margin-right: 7px;
+  color: rgba(159, 231, 245, .70) !important;
+  text-align: center;
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu .nav-link:hover {
+  background: rgba(255,255,255,.08) !important;
+  color: #fff !important;
+  transform: translateX(2px);
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu .nav-link:hover .sb-nav-link-icon {
+  color: #fff !important;
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu .nav-link.active {
+  background: rgba(159, 231, 245, .15) !important;
+  color: #fff !important;
+  border-left: 0;
+  font-weight: 750;
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu .nav-link.active .sb-nav-link-icon {
+  color: var(--izzy-sky) !important;
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu-nested {
+  margin-left: 18px !important;
+  padding-left: 7px !important;
+  border-left: 1px solid rgba(159, 231, 245, .14);
+}
+
+body.izzy-ui-2026 .sb-sidenav-menu-nested .nav-link {
+  min-height: 36px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+body.izzy-ui-2026 .sb-sidenav-footer {
+  background: #07364D !important;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+body.izzy-ui-2026 .sb-sidenav-footer .db-badge {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body.izzy-ui-2026 .sb-sidenav-footer .db-label {
+  color: rgba(255,255,255,.58) !important;
+}
+
+body.izzy-ui-2026 .sb-sidenav-footer .db-name {
+  color: #fff !important;
+}
+
+body.izzy-ui-2026 .sb-sidenav-footer .db-icon {
+  color: var(--izzy-sky) !important;
+}
+
+/* ---------- Superficies / tarjetas ---------- */
+body.izzy-ui-2026 .card {
+  border-color: var(--izzy-border);
+  border-radius: var(--izzy-radius);
+  box-shadow: var(--izzy-shadow);
+}
+
+body.izzy-ui-2026 .card-header {
+  border-bottom-color: #E7EEF2;
+  background: #fff;
+  color: var(--izzy-navy);
+}
+
+body.izzy-ui-2026 .card-footer {
+  border-top-color: #E7EEF2;
+  background: #FBFDFE;
+}
+
+/* ---------- Botones ---------- */
+body.izzy-ui-2026 .btn {
+  border-radius: 8px;
+  box-shadow: none;
+  font-weight: 700;
+}
+
+body.izzy-ui-2026 .btn:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+body.izzy-ui-2026 .btn-primary {
+  background: var(--izzy-navy) !important;
+  border-color: var(--izzy-navy) !important;
+}
+
+body.izzy-ui-2026 .btn-secondary {
+  background: #EEF3F5 !important;
+  border: 1px solid #CBD8DF !important;
+  color: #405866 !important;
+}
+
+body.izzy-ui-2026 .btn-info {
+  background: var(--izzy-blue) !important;
+  border-color: var(--izzy-blue) !important;
+}
+
+body.izzy-ui-2026 .btn-warning {
+  background: var(--izzy-amber) !important;
+  border-color: var(--izzy-amber) !important;
+  color: #273A43 !important;
+}
+
+body.izzy-ui-2026 .btn-danger {
+  background: var(--izzy-orange) !important;
+  border-color: var(--izzy-orange) !important;
+}
+
+/* ---------- Formularios ---------- */
+body.izzy-ui-2026 .form-control,
+body.izzy-ui-2026 .custom-select {
+  border-color: var(--izzy-border-strong);
+  border-radius: 8px;
+  box-shadow: none;
+  color: var(--izzy-text);
+}
+
+body.izzy-ui-2026 .form-control:focus,
+body.izzy-ui-2026 .custom-select:focus {
+  border-color: var(--izzy-blue);
+  box-shadow: 0 0 0 .15rem rgba(66, 158, 189, .12);
+}
+
+/* ---------- Dropdowns ---------- */
+body.izzy-ui-2026 .dropdown-menu {
+  border: 1px solid var(--izzy-border);
+  border-radius: 10px;
+  box-shadow: 0 12px 30px rgba(5, 63, 92, .13);
+}
+
+body.izzy-ui-2026 .dropdown-item {
+  color: #425C68;
+  font-size: 13px;
+}
+
+body.izzy-ui-2026 .dropdown-item:hover,
+body.izzy-ui-2026 .dropdown-item:focus {
+  background: #F1F7F9;
+  color: var(--izzy-navy) !important;
+}
+
+/* ---------- Modales ---------- */
+body.izzy-ui-2026 .modal-content {
+  border: 1px solid var(--izzy-border);
+  border-radius: 14px;
+  box-shadow: 0 20px 55px rgba(5, 63, 92, .18);
+}
+
+body.izzy-ui-2026 .modal-header {
+  background: #FBFDFE;
+  border-bottom: 1px solid #E7EEF2;
+}
+
+body.izzy-ui-2026 .modal-title {
+  color: var(--izzy-navy);
+  font-weight: 800;
+}
+
+/* ---------- Tablas ---------- */
+body.izzy-ui-2026 .table thead th {
+  background: #F0F6F8;
+  color: var(--izzy-navy);
+  border-color: var(--izzy-border);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+body.izzy-ui-2026 .table td,
+body.izzy-ui-2026 .table th {
+  border-color: #E6EDF1;
+}
+
+/* ---------- Breadcrumb ---------- */
+body.izzy-ui-2026 .breadcrumb-harmony {
+  border-color: var(--izzy-border);
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(5, 63, 92, .035);
+}
+
+body.izzy-ui-2026 .breadcrumb-harmony .breadcrumb-item.active,
+body.izzy-ui-2026 .breadcrumb-harmony .breadcrumb-icon {
+  color: var(--izzy-navy);
+}
+
+/* ---------- Móvil / tablet ---------- */
+@media (max-width: 1399.98px) {
+  body.izzy-ui-2026 .top-quick-nav .top-quick-link span {
+    display: none;
+  }
+
+  body.izzy-ui-2026 .top-quick-nav .top-quick-link {
+    width: 34px;
+    min-width: 34px;
+    justify-content: center;
+    padding: 6px !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  body.izzy-ui-2026 #layoutSidenav_content main > .container-fluid {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  body.izzy-ui-2026 .mobile-mainmenu-wrapper .btn {
+    min-width: 0;
+    height: 34px;
+    padding: 6px 10px;
+    border: 1px solid var(--izzy-border);
+    background: #F7FAFB;
+    color: var(--izzy-navy);
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  body.izzy-ui-2026 .sb-topnav {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  body.izzy-ui-2026 #layoutSidenav_content main > .container-fluid {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.izzy-ui-2026 .sb-sidenav-menu .nav-link {
+    transition: none;
+  }
+
+  body.izzy-ui-2026 .sb-sidenav-menu .nav-link:hover {
+    transform: none;
+  }
+}
