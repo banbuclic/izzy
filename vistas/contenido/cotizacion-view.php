@@ -1,14 +1,16 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/plantilla/css/cotizacion_modales.css">
+<link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/plantilla/css/cotizacion-ui-2026.css">
 <body id="view_quote">
     <div class="container-fluid">
-        <div class="card mb-4">
-            <div class="card-header">
+        <div class="card mb-4 cotizacion-workspace-card">
+            <div class="card-header cotizacion-workspace-header">
                 <i class="fas fa-file-invoice-dollar fa-lg mr-1"></i>
                 Cotización
             </div>
-            <div class="card-body">
+            <div class="card-body cotizacion-workspace-body">
                 <form class="FormularioAjax" id="quoteForm" action="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8');?>ajax/addCotizacionAjax.php"
                     method="POST" data-form="save" autocomplete="off" enctype="multipart/form-data">
+                    <div class="cotizacion-context-grid">
                     <div class="form-group row customer-bill-box-left">
                         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                             <div class="bill-header-row">
@@ -28,9 +30,10 @@
                             <span id="hora-customers-quote"></span>
                         </div>
                     </div>
-                    <div class="bill">
+                    </div>
+                    <div class="bill cotizacion-operacion">
                         <div class="form-group row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cotizacion-primary-toolbar">
                                 <button class="btn btn-secondary" type="submit" id="help_factura" form="quoteForm"
                                     data-toggle="tooltip" data-placement="top" title="Ayuda">
                                     <div class="sb-nav-link-icon"></div><i class="fas fa-question-circle fa-lg"></i>
