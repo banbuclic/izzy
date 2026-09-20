@@ -70,6 +70,7 @@ if (!$esRutaPublicaInicial && !$sesionValida) {
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/select2-izzy.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>fontawesome/css/all.min.css">
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/notyf.min.css" rel="stylesheet" />
+    <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/izzy-ui-2026.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/img/icono.png">
 <!--     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>ajax/sweetalert/sweetalert.css"
         rel="stylesheet" crossorigin="anonymous" /> -->   
@@ -85,7 +86,7 @@ if (!$esRutaPublicaInicial && !$sesionValida) {
 
 </head>
 
-<body class="sb-nav-fixed<?php echo $modoSoloLecturaPagoActivo ? ' izzy-payment-readonly' : ''; ?>">
+<body class="sb-nav-fixed izzy-ui-2026<?php echo $modoSoloLecturaPagoActivo ? ' izzy-payment-readonly' : ''; ?>">
     <?php
         if (defined('SISTEMA_PRUEBA_LABEL') && SISTEMA_PRUEBA_LABEL !== '') {
             echo '<div class="env-badge" data-toggle="tooltip" data-placement="left" title="Entorno de demostración - Datos no reales">
