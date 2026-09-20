@@ -36,59 +36,65 @@
   </div>
   <!-- ===== /Menú principal móvil ===== -->
 
-  <!-- Menú principal (versión desktop) -->
-  <ul class="navbar-nav d-none d-lg-flex">
+  <!-- Accesos rápidos de operación (desktop) -->
+  <ul class="navbar-nav d-none d-lg-flex top-quick-nav" aria-label="Accesos rápidos">
     <li class="nav-item">
-      <a class="nav-link link menu-item reporteVentas" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteVentas/"
-         style="display:none">
-        <i class="fas fa-file-invoice-dollar fa-lg mr-2"></i>Reporte Ventas
+      <a class="nav-link link menu-item cajas top-quick-link"
+         href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>cajas/"
+         style="display:none"
+         data-toggle="tooltip"
+         data-placement="bottom"
+         title="Caja">
+        <i class="fas fa-cash-register"></i>
+        <span>Caja</span>
       </a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link link menu-item reporteCotizacion" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteCotizacion/"
-         style="display:none">
-        <i class="fas fa-file-signature fa-lg mr-2"></i>Reporte Cotización
+      <a class="nav-link link menu-item facturas top-quick-link top-quick-primary"
+         href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>facturas/"
+         style="display:none"
+         data-toggle="tooltip"
+         data-placement="bottom"
+         title="Facturar">
+        <i class="fas fa-file-invoice-dollar"></i>
+        <span>Facturar</span>
       </a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link link menu-item reporteCompras" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteCompras/"
-         style="display:none">
-        <i class="fas fa-shopping-cart fa-lg mr-2"></i>Reporte Compras
+      <a class="nav-link link menu-item cobrarClientes top-quick-link"
+         href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>cobrarClientes/"
+         style="display:none"
+         data-toggle="tooltip"
+         data-placement="bottom"
+         title="Cuentas por cobrar">
+        <i class="fas fa-hand-holding-usd"></i>
+        <span>CxC</span>
       </a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link link menu-item cobrarClientes" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>cobrarClientes/"
-         style="display:none">
-        <i class="fas fa-hand-holding-usd fa-lg mr-2"></i>CXC Clientes
+      <a class="nav-link link menu-item transferencia top-quick-link"
+         href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>transferencia/"
+         style="display:none"
+         data-toggle="tooltip"
+         data-placement="bottom"
+         title="Inventario">
+        <i class="fas fa-boxes"></i>
+        <span>Inventario</span>
       </a>
     </li>
+
     <li class="nav-item">
-      <a class="nav-link link menu-item pagarProveedores" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>pagarProveedores/"
-         style="display:none">
-        <i class="fas fa-file-invoice fa-lg mr-2"></i>CXP Proveedores
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link menu-item inventario" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>inventario/"
-         style="display:none">
-        <i class="fas fa-exchange-alt fa-lg mr-2"></i>Movimientos
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link menu-item transferencia" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>transferencia/"
-         style="display:none">
-        <i class="fas fa-boxes fa-lg mr-2"></i>Inventario
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link menu-item nomina" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>nomina/"
-         style="display:none">
-        <i class="fas fa-money-check-alt fa-lg mr-2"></i>Nomina
-      </a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link link menu-item asistencia" href="#" id="marcarAsistencia">
-        <i class="fas fa-user-clock fa-lg mr-2"></i>Asistencia
+      <a class="nav-link link menu-item reporteVentas top-quick-link"
+         href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteVentas/"
+         style="display:none"
+         data-toggle="tooltip"
+         data-placement="bottom"
+         title="Reporte de ventas">
+        <i class="fas fa-chart-line"></i>
+        <span>Ventas</span>
       </a>
     </li>
   </ul>
