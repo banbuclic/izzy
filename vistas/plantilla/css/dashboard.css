@@ -1537,3 +1537,204 @@
     }
 }
 
+
+
+/* =========================================================
+   IZZY | DASHBOARD - MODERNIZACIÓN VISUAL 2026
+   Solo presentación. Se conservan IDs, data-attributes,
+   enlaces, canvas, botones y eventos existentes.
+   ========================================================= */
+
+.izzy-modern-ui .dashboard-section-card,
+.izzy-modern-ui .dashboard-fiscales-card,
+.izzy-modern-ui .chart-card {
+    border-color: #dce6eb !important;
+    border-radius: 14px !important;
+    background: #fff !important;
+    box-shadow: 0 5px 18px rgba(5, 63, 92, .065) !important;
+}
+
+.izzy-modern-ui .dashboard-section-header,
+.izzy-modern-ui .dashboard-fiscales-header,
+.izzy-modern-ui .chart-header {
+    background: #fff !important;
+    border-bottom-color: #e6eef2 !important;
+}
+
+.izzy-modern-ui .dashboard-section-heading strong,
+.izzy-modern-ui .dashboard-fiscales-heading strong,
+.izzy-modern-ui .chart-title {
+    color: #053F5C !important;
+}
+
+.izzy-modern-ui .dashboard-section-heading small,
+.izzy-modern-ui .dashboard-fiscales-heading small {
+    color: #71838c !important;
+}
+
+.izzy-modern-ui .dashboard-section-icon,
+.izzy-modern-ui .dashboard-fiscales-heading-icon {
+    background: rgba(159, 231, 245, .24) !important;
+    border-color: rgba(66, 158, 189, .22) !important;
+    color: #2f89aa !important;
+    border-radius: 11px !important;
+}
+
+.izzy-modern-ui .dashboard-card {
+    min-height: 136px;
+    border-color: #dce6eb !important;
+    border-radius: 13px !important;
+    box-shadow: 0 4px 14px rgba(5, 63, 92, .055) !important;
+}
+
+.izzy-modern-ui .dashboard-card:hover {
+    transform: translateY(-4px);
+    border-color: #cbdce4 !important;
+    box-shadow: 0 10px 24px rgba(5, 63, 92, .09) !important;
+}
+
+.izzy-modern-ui .dashboard-card::before {
+    width: 4px;
+}
+
+.izzy-modern-ui .col-xl-3:nth-child(1) .dashboard-card::before {
+    background: #429EBD !important;
+}
+
+.izzy-modern-ui .col-xl-3:nth-child(2) .dashboard-card::before {
+    background: #9FE7F5 !important;
+}
+
+.izzy-modern-ui .col-xl-3:nth-child(3) .dashboard-card::before {
+    background: #F7AD19 !important;
+}
+
+.izzy-modern-ui .col-xl-3:nth-child(4) .dashboard-card::before {
+    background: #F27F0C !important;
+}
+
+.izzy-modern-ui .dashboard-card .card-subtitle {
+    color: #71838c !important;
+    letter-spacing: .04em;
+}
+
+.izzy-modern-ui .dashboard-card h2 {
+    color: #053F5C !important;
+}
+
+.izzy-modern-ui .dashboard-card .icon-circle {
+    background: rgba(66, 158, 189, .10) !important;
+    border-color: rgba(66, 158, 189, .18) !important;
+    color: #429EBD !important;
+    border-radius: 11px !important;
+}
+
+.izzy-modern-ui .col-xl-3:nth-child(2) .dashboard-card .icon-circle {
+    background: rgba(159, 231, 245, .20) !important;
+    border-color: rgba(66, 158, 189, .15) !important;
+    color: #287d9d !important;
+}
+
+.izzy-modern-ui .col-xl-3:nth-child(3) .dashboard-card .icon-circle {
+    background: rgba(247, 173, 25, .12) !important;
+    border-color: rgba(247, 173, 25, .24) !important;
+    color: #a86f00 !important;
+}
+
+.izzy-modern-ui .col-xl-3:nth-child(4) .dashboard-card .icon-circle {
+    background: rgba(242, 127, 12, .10) !important;
+    border-color: rgba(242, 127, 12, .22) !important;
+    color: #d26300 !important;
+}
+
+.izzy-modern-ui .dashboard-card .card-footer-text {
+    color: #7c8d96 !important;
+}
+
+.izzy-modern-ui .chart-title i {
+    color: #429EBD !important;
+}
+
+.izzy-modern-ui .year-selector .btn {
+    border-color: #d7e3e8 !important;
+    background: #fff !important;
+    color: #58707d !important;
+    border-radius: 7px !important;
+}
+
+.izzy-modern-ui .year-selector .btn.active,
+.izzy-modern-ui .year-selector .btn:hover {
+    border-color: rgba(66, 158, 189, .42) !important;
+    background: rgba(159, 231, 245, .18) !important;
+    color: #053F5C !important;
+}
+
+.izzy-modern-ui .chart-btn {
+    border-color: #d7e3e8 !important;
+    background: #fff !important;
+    color: #347f9d !important;
+    border-radius: 8px !important;
+}
+
+.izzy-modern-ui .chart-btn:hover {
+    border-color: rgba(66, 158, 189, .42) !important;
+    background: rgba(159, 231, 245, .16) !important;
+    color: #053F5C !important;
+}
+
+.izzy-modern-ui .dashboard-fiscal-item {
+    border-color: #dce6eb !important;
+    border-radius: 12px !important;
+    box-shadow: 0 3px 11px rgba(5, 63, 92, .045) !important;
+}
+
+.izzy-modern-ui .dashboard-fiscal-item::before {
+    background: #429EBD !important;
+}
+
+.izzy-modern-ui .dashboard-fiscal-item-head {
+    background: #fbfdfe !important;
+    border-bottom-color: #e7eef2 !important;
+}
+
+.izzy-modern-ui .dashboard-fiscal-icon {
+    background: rgba(159, 231, 245, .20) !important;
+    border-color: rgba(66, 158, 189, .20) !important;
+    color: #2e819f !important;
+}
+
+.izzy-modern-ui .dashboard-fiscal-title-row h4,
+.izzy-modern-ui .dashboard-fiscal-next strong,
+.izzy-modern-ui .dashboard-fiscal-detail strong {
+    color: #053F5C !important;
+}
+
+.izzy-modern-ui .dashboard-page-btn {
+    border-color: #d7e3e8 !important;
+    background: #fff !important;
+    color: #506875 !important;
+    border-radius: 7px !important;
+}
+
+.izzy-modern-ui .dashboard-page-btn.active {
+    border-color: #429EBD !important;
+    background: #429EBD !important;
+    color: #fff !important;
+}
+
+.izzy-modern-ui .dashboard-fiscales-link {
+    border-color: rgba(66, 158, 189, .28) !important;
+    background: #fff !important;
+    color: #287d9d !important;
+}
+
+.izzy-modern-ui .dashboard-fiscales-link:hover {
+    background: rgba(159, 231, 245, .15) !important;
+    color: #053F5C !important;
+}
+
+@media (max-width: 767.98px) {
+    .izzy-modern-ui .dashboard-card:hover {
+        transform: none;
+    }
+}
