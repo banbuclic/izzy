@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pantalla de Cocina - IZZY</title>
-    <meta name="theme-color" content="#2f465b">
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232f465b'/%3E%3Cpath fill='white' d='M18 11h4v16c0 5-2 8-6 10v16h-5V37c-4-2-6-5-6-10V11h4v13h2V11h4v13h3V11zm26 0c7 0 12 7 12 16 0 7-3 12-8 14v12h-5V11z'/%3E%3C/svg%3E">
+    <meta name="theme-color" content="#0B1F52">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B1F52'/%3E%3Cpath fill='white' d='M18 11h4v16c0 5-2 8-6 10v16h-5V37c-4-2-6-5-6-10V11h4v13h2V11h4v13h3V11zm26 0c7 0 12 7 12 16 0 7-3 12-8 14v12h-5V11z'/%3E%3C/svg%3E">
     <link rel="stylesheet" href="<?php echo SERVERURL; ?>fontawesome/css/all.min.css">
     <?php $cocinaCssVersion = @filemtime(dirname(__DIR__) . '/plantilla/css/cocina.css') ?: time(); ?>
     <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/plantilla/css/cocina.css?v=<?php echo (int)$cocinaCssVersion; ?>">
+    <?php $cocinaThemeVersion = @filemtime(dirname(__DIR__) . '/plantilla/css/izzy-cocina-theme.css') ?: time(); ?>
+    <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/plantilla/css/izzy-cocina-theme.css?v=<?php echo (int)$cocinaThemeVersion; ?>">
 
     <style>
         .header-cocina{
