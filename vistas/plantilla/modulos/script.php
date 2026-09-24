@@ -1,6 +1,7 @@
 <!-- ========== TEMA VISUAL GLOBAL IZZY ========== -->
 <!-- Se carga al final para respetar la lógica de cada módulo y unificar únicamente la capa visual. -->
 <link rel="stylesheet" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/izzy-system-theme.css">
+<link rel="stylesheet" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/izzy-system-module-bridge.css">
 
 <!-- ========== SCRIPTS BASE (sin defer - críticos) ========== -->
 <!-- 1. jQuery (debe cargarse primero) -->
