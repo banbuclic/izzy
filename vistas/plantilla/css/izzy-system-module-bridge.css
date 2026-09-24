@@ -1,0 +1,93 @@
+/* ============================================================
+   IZZY — PUENTE DE ESTILOS POR MÓDULO
+   ------------------------------------------------------------
+   Normaliza variables visuales que algunos módulos declaran de
+   forma local. No reemplaza reglas de layout ni colores semánticos
+   de éxito, advertencia o error.
+   ============================================================ */
+
+body.sb-nav-fixed [class$="-page"],
+body.sb-nav-fixed [class*="-page "],
+body.sb-nav-fixed [class*=" page-"] {
+  --navy: #0B1F52;
+  --navy2: #132A5D;
+  --blue: #1098EA;
+  --teal: #1098EA;
+  --muted: #728198;
+  --border: #DDE7F0;
+  --text: #13233F;
+  --bg: #F4F8FC;
+  --surface: #FFFFFF;
+  --primary-color: #0B1F52;
+  --secondary-color: #1098EA;
+  --accent-color: #1098EA;
+  --text-color: #13233F;
+  --muted-color: #728198;
+  --border-color: #DDE7F0;
+}
+
+/* Cabeceras y contenedores personalizados mantienen el mismo lenguaje. */
+body.sb-nav-fixed [class*="-section-card"],
+body.sb-nav-fixed [class*="-list-card"],
+body.sb-nav-fixed [class*="-content-card"] {
+  border-color: #DDE7F0 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(11, 31, 82, 0.055) !important;
+}
+
+body.sb-nav-fixed [class*="-section-header"],
+body.sb-nav-fixed [class*="-card-header"] {
+  border-color: #E5EDF5 !important;
+}
+
+/* KPIs: se unifica la base sin borrar el significado de estados. */
+body.sb-nav-fixed [class*="-kpi-card"] {
+  border-color: #DDE7F0 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 3px 10px rgba(11, 31, 82, 0.055) !important;
+}
+
+body.sb-nav-fixed [class*="-kpi-icon"],
+body.sb-nav-fixed [class*="-section-icon"] {
+  border-color: #D6E6F4 !important;
+  background-color: #EEF7FD !important;
+  color: #0F82CA !important;
+}
+
+/* Toolbars y buscadores personalizados. */
+body.sb-nav-fixed [class*="-toolbar"],
+body.sb-nav-fixed [class*="-filters"] {
+  color: #13233F;
+}
+
+/* Tarjetas de miniatura personalizadas conservan layout y responsive. */
+body.sb-nav-fixed [class*="-mini-card"] {
+  border-color: #DDE7F0 !important;
+  background-color: #FFFFFF !important;
+  box-shadow: 0 2px 8px rgba(11, 31, 82, 0.06) !important;
+}
+
+/* Encabezados oscuros personalizados pasan al navy aprobado. */
+body.sb-nav-fixed [class*="-detail-header"],
+body.sb-nav-fixed [class*="-table-header"] {
+  background-color: #0B1F52 !important;
+  color: #FFFFFF !important;
+}
+
+/* Controles de vista/paginación personalizados. */
+body.sb-nav-fixed [class*="-view-btn"].active,
+body.sb-nav-fixed [class*="-page-btn"].active {
+  border-color: #1098EA !important;
+  background-color: #1098EA !important;
+  color: #FFFFFF !important;
+}
+
+/* Mantener dropdowns de acciones legibles y encima de tarjetas. */
+body.sb-nav-fixed [class*="-actions-dropdown"] > .dropdown-menu {
+  border-color: #DDE7F0 !important;
+  background: #FFFFFF !important;
+  box-shadow: 0 10px 28px rgba(11, 31, 82, 0.12) !important;
+}
+
+/* No se tocan .success/.danger/.warning ni variables --green/--red:
+   continúan comunicando estados reales del sistema. */
