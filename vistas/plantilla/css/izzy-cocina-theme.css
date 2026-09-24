@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================
+   IZZY — TEMA VISUAL PANTALLA DE COCINA
+   Capa visual exclusiva para /cocina/. No modifica lógica, IDs,
+   token, estados ni comportamiento del módulo.
+   ============================================================ */
+:root {
+  --izzy-navy: #0B1F52;
+  --izzy-blue: #1098EA;
+  --izzy-bg: #F4F8FC;
+  --izzy-surface: #FFFFFF;
+  --izzy-border: #DDE7F0;
+  --izzy-text: #13233F;
+  --izzy-muted: #728198;
+  --izzy-blue-soft: #EAF7FE;
+  --izzy-shadow: 0 8px 24px rgba(11, 31, 82, 0.10);
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: 'Manrope', 'Segoe UI', Arial, sans-serif !important;
+}
+
+body {
+  background: var(--izzy-bg) !important;
+  color: var(--izzy-text) !important;
+}
+
+.vista-cocina-container {
+  background: var(--izzy-bg) !important;
+}
+
+.header-cocina {
+  background: var(--izzy-navy) !important;
+  color: #FFFFFF !important;
+  border-bottom: 0 !important;
+  box-shadow: 0 4px 18px rgba(11, 31, 82, 0.16) !important;
+}
+
+.header-cocina h1,
+.header-cocina p {
+  color: #FFFFFF !important;
+}
+
+.cocina-fullscreen-btn {
+  border-color: rgba(255,255,255,.22) !important;
+  background: rgba(255,255,255,.10) !important;
+  color: #FFFFFF !important;
+  border-radius: 9px !important;
+}
+
+.cocina-fullscreen-btn:hover,
+.cocina-fullscreen-btn:focus-visible {
+  background: rgba(255,255,255,.18) !important;
+  border-color: rgba(255,255,255,.38) !important;
+}
+
+.cocina-pairing-card,
+.no-comandas,
+.comanda-card,
+[class*='comanda-card'],
+[class*='cocina-card'] {
+  background: var(--izzy-surface) !important;
+  border-color: var(--izzy-border) !important;
+  border-radius: 14px !important;
+  box-shadow: var(--izzy-shadow) !important;
+}
+
+.cocina-pairing-card h2,
+.no-comandas strong,
+.comanda-card h2,
+.comanda-card h3 {
+  color: var(--izzy-text) !important;
+}
+
+.cocina-pairing-help,
+.cocina-pair-expire,
+.no-comandas p,
+.comanda-card p,
+.comanda-card small {
+  color: var(--izzy-muted) !important;
+}
+
+.cocina-pairing-icon,
+.no-comandas-icon {
+  background: var(--izzy-blue-soft) !important;
+  border-color: #D6E6F4 !important;
+  color: var(--izzy-blue) !important;
+}
+
+.cocina-pair-code {
+  color: var(--izzy-navy) !important;
+  background: #F8FBFE !important;
+  border-color: var(--izzy-border) !important;
+  border-radius: 10px !important;
+}
+
+.cocina-pair-status {
+  color: var(--izzy-muted) !important;
+}
+
+.cocina-pair-new,
+.refresh-button,
+button[class*='cocina-'] {
+  background: var(--izzy-navy) !important;
+  color: #FFFFFF !important;
+  border-color: var(--izzy-navy) !important;
+  border-radius: 9px !important;
+  font-weight: 700 !important;
+  box-shadow: none !important;
+}
+
+.cocina-pair-new:hover,
+.refresh-button:hover,
+button[class*='cocina-']:hover {
+  background: #102A66 !important;
+  border-color: #102A66 !important;
+}
+
+.refresh-button {
+  box-shadow: 0 8px 18px rgba(11,31,82,.18) !important;
+}
+
+@media (max-width: 700px) {
+  .cocina-pairing-card,
+  .no-comandas,
+  .comanda-card,
+  [class*='comanda-card'] {
+    border-radius: 12px !important;
+  }
+}
