@@ -1,583 +1,332 @@
-/* ==================== */
-/* VARIABLES CSS GLOBALES */
-/* ==================== */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================
+   IZZY — ACCESO / RECUPERACIÓN / REGISTRO
+   Estándar visual 2026. Mantiene intactos IDs, formularios y JS.
+   ============================================================ */
 :root {
-    /* PALETA PRINCIPAL */
-    --primary: #2c3e50;       /* Color primario para botones/títulos */
-    --secondary: #3498db;     /* Color para enlaces/acciones secundarias */
-    --success: #28a745;       /* Indicador de éxito/confirmación */
-    --danger: #dc3545;        /* Indicador de error/peligro */
-    --warning: #ffc107;       /* Advertencias/alertas */
-    --info: #17a2b8;          /* Información contextual */
-    --dark: #343a40;          /* Textos principales */
-    --light: #f8f9fa;         /* Fondos claros */
-    
-    /* ESCALA DE GRISES (para bordes, fondos, etc.) */
-    --gray-200: #e9ecef;      /* Gris muy claro (fondos de inputs) */
-    --gray-300: #dee2e6;      /* Gris para bordes */
-    --gray-600: #6c757d;      /* Textos secundarios */
-    
-    /* EFECTOS VISUALES */
-    --transition-speed: 0.35s; /* Duración estándar para animaciones */
-    --accent-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Sombra sutil para hover */
-    --deep-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* Sombra profunda para contenedores */
-    
-    /* COLORES PARA ICONOS (asignación semántica) */
-    --icon-email: #E74C3C;    /* Iconos relacionados con email */
-    --icon-lock: #9B59B6;     /* Iconos de contraseña/seguridad */
-    --icon-user: #2ECC71;     /* Iconos de perfil/usuario */
-    --icon-phone: #E67E22;    /* Iconos de teléfono */
-    --icon-building: #E67E22; /* Iconos para la empresa */
-    --icon-at: #1ABC9C;       /* Iconos @ (para username/email) */
-    --icon-key: #F1C40F;      /* Iconos de clave/acceso */
-    --icon-eye: #3498db;      /* Iconos de visibilidad (mostrar/ocultar) */
-    --icon-signin: #2ECC71;   /* Iconos de acción "Ingresar" */
+    --izzy-navy: #0B1F52;
+    --izzy-blue: #1098EA;
+    --izzy-bg: #F4F8FC;
+    --izzy-surface: #FFFFFF;
+    --izzy-border: #DDE7F0;
+    --izzy-text: #13233F;
+    --izzy-muted: #728198;
+    --izzy-blue-soft: #EAF7FE;
+    --izzy-hover: #F8FBFE;
+    --izzy-focus: 0 0 0 3px rgba(16, 152, 234, .16);
+    --izzy-shadow: 0 16px 42px rgba(11, 31, 82, .12);
+    --success: #28A745;
+    --danger: #DC3545;
+    --warning: #FFC107;
 }
 
-/* ==================== */
-/* ESTILOS BASE (Configuración inicial del documento) */
-/* ==================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { min-height: 100%; }
+
 body {
-    /* Fondo degradado con orientación diagonal */
-    background: linear-gradient(135deg, var(--light) 0%, #c3cfe2 100%);
-    min-height: 100vh; /* Cubre toda la altura visible */
+    margin: 0;
+    min-height: 100vh;
     display: flex;
-    justify-content: center; /* Centrado horizontal */
-    align-items: center; /* Centrado vertical */
-    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif; /* Fuente moderna */
-    margin: 0; /* Elimina márgenes por defecto */
-    padding: 30px; /* Aumentado de 20px para más espacio alrededor del formulario */
-    color: var(--dark); /* Color de texto principal */
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px;
+    background: var(--izzy-bg);
+    color: var(--izzy-text);
+    font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ==================== */
-/* CONTENEDOR PRINCIPAL (Wrapper de todos los formularios) */
-/* ==================== */
 #logreg-forms {
     width: 100%;
-    max-width: 500px; /* Contenedor 16% más grande (de 500px a 580px) */
+    max-width: 590px;
     margin: 0 auto;
-    position: relative;
 }
 
-/* ==================== */
-/* CONTENEDOR PRINCIPAL */
-/* ==================== */
-#logreg-forms {
-    width: 100%;
-    min-width: 300px;
-    max-width: 600px; /* Aumentado de 500px a 650px */
-    margin: 0 auto;
-    position: relative;
-    box-sizing: border-box;
-}
-
-/* ==================== */
-/* RESPONSIVE */
-/* ==================== */
-@media (max-width: 768px) {
-    #logreg-forms {
-        max-width: 90%; /* Más ancho en tablets */
-        padding: 0 15px;
-    }
-}
-
-@media (max-width: 576px) {
-    #logreg-forms {
-        max-width: 100%; /* Ocupa todo el ancho en móviles */
-        padding: 0 10px;
-    }
-    
-    #logreg-forms .form-signin,
-    #logreg-forms .form-reset,
-    #logreg-forms .form-signup {
-        padding: 2rem;
-    }
-}
-
-/* ==================== */
-/* FORMULARIOS */
-/* ==================== */
 #logreg-forms .form-signin,
 #logreg-forms .form-reset,
 #logreg-forms .form-signup {
-    background: white;
     width: 100%;
-    max-width: 100%; /* Asegura que ocupe todo el ancho disponible */
-    padding: 3rem; /* Padding más uniforme */
-    border-radius: 15px;
-    box-shadow: var(--deep-shadow);
-    transition: var(--transition-speed);
-    margin-bottom: 2.5rem;
-    font-size: 1rem;
-    box-sizing: border-box;
+    padding: 34px;
+    margin: 0 0 20px;
+    background: var(--izzy-surface);
+    border: 1px solid var(--izzy-border);
+    border-radius: 16px;
+    box-shadow: var(--izzy-shadow);
 }
 
-/* ==================== */
-/* GRUPOS DE INPUT (Contenedores de campos de formulario) */
-/* ==================== */
-#logreg-forms .input-group {
-    margin-bottom: 1.8rem; /* Aumentado de 1.5rem */
-    position: relative; /* Para posicionar elementos hijos */
-}
-
-/* Contenedores de iconos (parte izquierda de los inputs) */
-#logreg-forms .input-group-prepend .input-group-text,
-#logreg-forms .input-group-append .input-group-text {
-    background-color: var(--light); /* Fondo gris claro */
-    border: 1px solid var(--gray-300); /* Borde sutil */
-    border-right: none; /* Elimina borde derecho para unión con input */
-    border-radius: 9px 0 0 9px; /* Aumentado de 8px */
-    transition: var(--transition-speed); /* Transición para efectos hover */
-    min-width: 54px; /* Aumentado de 50px */
-    display: flex;
-    align-items: center; /* Centrado vertical */
-    justify-content: center; /* Centrado horizontal */
-    padding: 0; /* Sin padding interno */
-    height: 54px; /* Aumentado de 50px */
-}
-
-/* Iconos generales (dentro de los input-group) */
-#logreg-forms .input-group-text i {
-    font-size: 1.6rem; /* Aumentado de 1.5rem */
-    width: auto; /* Ancho automático según icono */
-    display: inline-flex; /* Para mejor alineación */
-    align-items: center;
-    justify-content: center;
-}
-
-/* Asignación de colores específicos por tipo de icono */
-#logreg-forms .fa-envelope-square { color: var(--icon-email); }
-#logreg-forms .fa-lock { color: var(--icon-lock); }
-#logreg-forms .fa-building { color: var(--icon-building); }
-#logreg-forms .fa-user { color: var(--icon-user); }
-#logreg-forms .fa-phone { color: var(--icon-phone); }
-#logreg-forms .fa-at { color: var(--icon-at); }
-#logreg-forms .fa-key { color: var(--icon-key); }
-#logreg-forms .fa-eye-slash,
-#logreg-forms .fa-eye { color: var(--icon-eye); }
-#logreg-forms .fa-sign-in-alt { color: var(--icon-signin); }
-
-/* ==================== */
-/* INPUTS (Campos de texto/contraseña - AHORA MÁS GRANDES) */
-/* ==================== */
-#logreg-forms .form-control {
-    height: 54px; /* Aumentado de 50px */
-    border: 1px solid var(--gray-300); /* Borde sutil */
-    border-left: none; /* Elimina borde izquierdo para unión con icono */
-    border-radius: 0 9px 9px 0; /* Aumentado de 8px */
-    padding: 0.85rem 1.1rem; /* Aumentado de 0.75rem 1rem */
-    transition: var(--transition-speed); /* Transición para efectos focus */
-    box-shadow: none; /* Elimina sombra por defecto de Bootstrap */
-    font-size: 1.05rem; /* Ligero aumento */
-}
-
-/* Efecto cuando el input está enfocado */
-#logreg-forms .form-control:focus {
-    border-color: var(--secondary); /* Borde azul */
-    box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25); /* Sombra azul suave (aumentada) */
-}
-
-/* Efecto para el contenedor del icono cuando el input está enfocado */
-.input-group:focus-within .input-group-text {
-    background-color: var(--gray-200); /* Fondo ligeramente más oscuro */
-}
-
-/* ==================== */
-/* BOTONES MOSTRAR CONTRASEÑA (Toggle para password - AHORA MÁS GRANDES) */
-/* ==================== */
-#show_password, 
-#show_password1, 
-#show_password2 {
-    width: 64px; /* Aumentado de 60px */
-    border-radius: 0 9px 9px 0; /* Aumentado de 8px */
-    border: 1px solid var(--gray-300); /* Borde que coincide con el input */
-    border-left: none; /* Elimina borde izquierdo para unión */
-    background-color: var(--light); /* Fondo igual que los iconos */
-    transition: var(--transition-speed); /* Transición para hover */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 54px; /* Aumentado de 50px */
-}
-
-/* Iconos dentro del botón de mostrar contraseña */
-#show_password i,
-#show_password1 i,
-#show_password2 i {
-    color: var(--icon-eye); /* Color azul para el icono */
-    font-size: 1.4rem; /* Aumentado de 1.3rem */
-}
-
-/* Efecto hover para el botón de contraseña */
-#show_password:hover, 
-#show_password1:hover, 
-#show_password2:hover {
-    background-color: var(--gray-200); /* Fondo más oscuro */
-}
-
-/* Cambio de color del icono al hacer hover */
-#show_password:hover i,
-#show_password1:hover i,
-#show_password2:hover i {
-    color: var(--secondary); /* Color azul más vibrante */
-}
-
-/* ==================== */
-/* GRUPO PIN/CLIENTE (Sección dinámica para autenticación) */
-/* ==================== */
-#groupDB {
-    margin-top: 1.2rem; /* Aumentado de 1rem */
-    animation: fadeIn var(--transition-speed) ease-in-out; /* Animación de aparición */
-}
-
-/* Estilos específicos para los iconos en este grupo */
-#groupDB .input-group-prepend .input-group-text {
-    background-color: var(--light);
-    border: 1px solid var(--gray-300);
-    border-right: none;
-    color: var(--icon-user); /* Color verde para icono de usuario */
-}
-
-#groupDB .input-group-append .input-group-text {
-    background-color: var(--light);
-    border: 1px solid var(--gray-300);
-    border-left: none;
-    border-right: none;
-    color: var(--icon-key); /* Color amarillo para icono de clave */
-}
-
-/* Inputs dentro de este grupo */
-#groupDB .form-control {
-    border: 1px solid var(--gray-300);
-    border-left: none;
-    border-right: none;
-    text-align: center; /* Texto centrado */
-    font-weight: bold; /* Texto en negrita */
-}
-
-/* Ajuste para el último elemento del grupo */
-#groupDB .input-group-append:last-child .input-group-text {
-    border-right: 1px solid var(--gray-300); /* Restaura borde derecho */
-    border-radius: 0 9px 9px 0; /* Aumentado de 8px */
-}
-
-/* ==================== */
-/* AJUSTE EXCLUSIVO PARA ICONOS EN BOTONES */
-/* ==================== */
-#logreg-forms .btn i {
-    display: inline-flex;       /* Mejor control de alineación */
-    align-items: center;        /* Centrado vertical perfecto */
-    justify-content: center;    /* Centrado horizontal */
-    height: 100%;              /* Toma toda la altura del botón */
-    margin-right: 10px;        /* Mantiene el espacio original */
-    font-size: 1.4rem;         /* Conserva tamaño original */
-    line-height: 1;            /* Elimina espacio extra vertical */
-    vertical-align: middle;    /* Alineación adicional */
-    margin-top: -1px;          /* Ajuste fino de 1px si es necesario */
-}
-
-/* ==================== */
-/* BOTONES PRINCIPALES (Acciones primarias - AHORA MÁS GRANDES) */
-/* ==================== */
-#logreg-forms .btn {
-    height: 54px; /* Aumentado de 50px */
-    border-radius: 9px; /* Aumentado de 8px */
-    font-weight: 600; /* Texto semibold */
-    letter-spacing: 0.6px; /* Aumentado de 0.5px */
-    transition: var(--transition-speed); /* Transición para efectos hover */
-    padding: 0.6rem 1.75rem; /* Aumentado de 0.5rem 1.5rem */
-    border: none; /* Sin bordes */
-    font-size: 1.05rem; /* Ligero aumento */
-
-    /* Nuevas propiedades para centrado y ajuste de texto */
-    display: inline-flex;        /* Mejor control del centrado */
-    align-items: center;         /* Centrado vertical */
-    justify-content: center;     /* Centrado horizontal */
-    white-space: normal;         /* Permite múltiples líneas */
-    word-wrap: break-word;       /* Rompe palabras largas */
-    text-align: center;          /* Alineación de texto */
-    line-height: 1.3;            /* Espaciado entre líneas */
-    min-width: min-content;      /* Ajuste automático al contenido */
-    gap: 8px; /* Espacio consistente entre icono y texto */
-}
-
-/* Botón primario (color principal) */
-#logreg-forms .btn-primary {
-    background-color: var(--primary); /* Azul oscuro */
-    color: white; /* Texto blanco */
-}
-
-/* Efecto hover para botón primario */
-#logreg-forms .btn-primary:hover {
-    background-color: var(--dark); /* Color más oscuro */
-    transform: translateY(-3px); /* Aumentado de -2px */
-    box-shadow: var(--accent-shadow); /* Sombra sutil */
-}
-
-/* Iconos dentro de botones */
-#logreg-forms .btn i {
-    margin-right: 0; /* Eliminamos el margin-right original */
-    flex-shrink: 0; /* Evita que el icono se encoja */
-    font-size: 1.4rem;
-    line-height: 1; /* Asegura que el icono no afecte el line-height */
-}
-
-/* Colores específicos para iconos en botones */
-#enviar i {
-    color: var(--icon-signin); /* Verde para icono de enviar */
-}
-
-#btn-signup i,
-#registrarse i {
-    color: var(--icon-user); /* Verde para icono de registro */
-    padding: 0.6rem 0.8rem;
-    height: auto;                /* Altura flexible */
-    min-height: 54px;            /* Altura mínima */    
-}
-
-/* ==================== */
-/* ELEMENTOS ADICIONALES (Componentes varios) */
-/* ==================== */
-/* Enlaces */
-#logreg-forms a {
-    color: var(--secondary); /* Azul brillante */
-    font-weight: 500; /* Peso medio */
-    transition: var(--transition-speed); /* Transición para hover */
-    font-size: 1.05rem; /* Ligero aumento */
-}
-
-#logreg-forms a:hover {
-    color: var(--primary); /* Azul oscuro al pasar mouse */
-    text-decoration: none; /* Sin subrayado */
-}
-
-/* Separador visual */
-#logreg-forms hr {
-    border-top: 1px solid rgba(0, 0, 0, 0.1); /* Línea sutil */
-    margin: 1.8rem 0; /* Aumentado de 1.5rem */
-}
-
-/* Logo */
-#logreg-forms img {
-    max-width: 300px; /* Aumentado de 180px */
-    height: auto; /* Altura proporcional */
-    margin: 0 auto 1.5rem; /* Aumentado de 1rem */
-    display: block; /* Para que el margin-auto funcione */
-    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1)); /* Sombra más pronunciada */
-}
-
-/* Pie de página */
-.footer-copyright {
-    color: var(--gray-600); /* Texto gris */
-    font-size: 1rem; /* Aumentado de 0.9rem */
-    margin-top: 2.5rem; /* Aumentado de 2rem */
-    text-align: center; /* Centrado */
-}
-
-/* ==================== */
-/* ANIMACIONES (Efectos dinámicos) */
-/* ==================== */
-/* Formularios secundarios (reset/signup) */
 #logreg-forms .form-reset,
-#logreg-forms .form-signup {
-    display: none; /* Ocultos por defecto */
-    animation: fadeIn var(--transition-speed) ease-in-out; /* Animación al mostrarse */
+#logreg-forms .form-signup { display: none; }
+
+#logreg-forms h1,
+#logreg-forms h2,
+#logreg-forms h3 {
+    margin-top: 0;
+    color: var(--izzy-text);
+    font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+    font-weight: 800 !important;
+    letter-spacing: -.025em;
 }
 
-/* Keyframes para animación de aparición */
-@keyframes fadeIn {
-    from { 
-        opacity: 0; /* Inicio transparente */
-        transform: translateY(15px); /* Aumentado de 10px */
-    }
-    to { 
-        opacity: 1; /* Opacidad completa */
-        transform: translateY(0); /* Posición final */
-    }
+#logreg-forms .text-muted,
+#logreg-forms p,
+#logreg-forms small {
+    color: var(--izzy-muted) !important;
 }
 
-/* ==================== */
-/* RESPUESTA AJAX (Mensajes del servidor) */
-/* ==================== */
-.RespuestaAjax {
-    margin-bottom: 1.8rem; /* Aumentado de 1.5rem */
-    padding: 0.9rem 1.5rem; /* Aumentado de 0.75rem 1.25rem */
-    border-radius: 9px; /* Aumentado de 8px */
-    font-size: 1rem; /* Aumentado de 0.9rem */
+#logreg-forms img {
+    display: block;
+    width: min(100%, 290px) !important;
+    max-height: 110px;
+    object-fit: contain;
+    margin: 4px auto 14px;
 }
 
-/* Variante de error */
-.RespuestaAjax.error {
-    background-color: rgba(220, 53, 69, 0.1); /* Fondo rojo claro */
-    border-left: 5px solid var(--danger); /* Aumentado de 4px */
-    color: var(--danger); /* Texto rojo */
+#logreg-forms .input-group {
+    width: 100%;
+    margin-bottom: 14px !important;
+    min-width: 0;
 }
 
-/* Variante de éxito */
-.RespuestaAjax.success {
-    background-color: rgba(40, 167, 69, 0.1); /* Fondo verde claro */
-    border-left: 5px solid var(--success); /* Aumentado de 4px */
-    color: var(--success); /* Texto verde */
-}
+#logreg-forms .input-group-prepend,
+#logreg-forms .input-group-append { min-width: 0; }
 
-/* ==================== */
-/* RESPONSIVE (Ajustes para móviles) */
-/* ==================== */
-@media (max-width: 768px) {
-    /* Reducción de padding en formularios */
-    #logreg-forms .form-signin,
-    #logreg-forms .form-reset,
-    #logreg-forms .form-signup {
-        padding: 2.5rem;
-    }
-    
-    /* Ajustes para botones en tablets */
-    #logreg-forms .btn {
-        font-size: 1rem;
-        padding: 0.5rem 1.5rem;
-    }
-    
-    #logreg-forms .btn i {
-        font-size: 1.2rem;
-    }
-}
-
-@media (max-width: 576px) {
-    /* Reducción de padding en formularios */
-    #logreg-forms .form-signin,
-    #logreg-forms .form-reset,
-    #logreg-forms .form-signup {
-        padding: 2rem;
-        font-size: 0.95rem;
-    }
-    
-    /* Menos padding en el body para móviles */
-    body {
-        padding: 15px;
-    }
-    
-    /* Ajustes para el logo en móviles */
-    #logreg-forms img {
-        max-width: 160px;
-    }
-    
-    /* Ajustes específicos para botones en móviles */
-    #logreg-forms .btn {
-        height: 48px; /* Altura ligeramente menor */
-        font-size: 0.95rem; /* Tamaño de fuente más pequeño */
-        padding: 0.5rem 1rem; /* Padding más ajustado */
-        gap: 6px; /* Menor espacio entre icono y texto */
-    }
-    
-    #logreg-forms .btn i {
-        font-size: 1.1rem; /* Iconos ligeramente más pequeños */
-    }
-    
-    /* Ajustes para inputs en móviles */
-    #logreg-forms .form-control {
-        height: 48px;
-        font-size: 0.95rem;
-        padding: 0.75rem 1rem;
-    }
-    
-    /* Ajustes para iconos de inputs */
-    #logreg-forms .input-group-prepend .input-group-text,
-    #logreg-forms .input-group-append .input-group-text {
-        height: 48px;
-        min-width: 48px;
-    }
-    
-    #logreg-forms .input-group-text i {
-        font-size: 1.4rem;
-    }
-    
-    /* Botones mostrar contraseña */
-    #show_password, 
-    #show_password1, 
-    #show_password2 {
-        height: 48px;
-        width: 56px;
-    }
-    
-    #show_password i,
-    #show_password1 i,
-    #show_password2 i {
-        font-size: 1.2rem;
-    }
-}
-
-/* Ajuste adicional para pantallas muy pequeñas (menos de 400px) */
-@media (max-width: 400px) {
-    #logreg-forms .btn {
-        font-size: 0.9rem; /* Tamaño de fuente aún más pequeño */
-        padding: 0.4rem 0.8rem; /* Padding más ajustado */
-    }
-    
-    #logreg-forms .btn i {
-        font-size: 1rem; /* Iconos más pequeños */
-    }
-    
-    /* Hacer que los botones ocupen todo el ancho en pantallas muy pequeñas */
-    #logreg-forms .btn-block {
-        width: 100%;
-    }
-}
-
-/* Añade esto a tu archivo CSS */
-.form-control::placeholder {
-    font-size: 0.85rem;  /* Tamaño reducido */
-    color: #6c757d;      /* Color gris más claro */
-    opacity: 1;          /* Asegura que no sea transparente */
-}
-
-/* Para los navegadores que usan prefijos */
-.form-control::-webkit-input-placeholder { /* Chrome/Edge/Safari */
-    font-size: 0.85rem;
-    color: #6c757d;
-}
-.form-control::-moz-placeholder { /* Firefox 19+ */
-    font-size: 0.85rem;
-    color: #6c757d;
-    opacity: 1;
-}
-.form-control:-ms-input-placeholder { /* IE 10+ */
-    font-size: 0.85rem;
-    color: #6c757d;
-}
-.form-control:-moz-placeholder { /* Firefox 18- */
-    font-size: 0.85rem;
-    color: #6c757d;
-    opacity: 1;
-}
-
-/* ==================== */
-/* CURSORES INTERACTIVOS */
-/* ==================== */
-
-/* Botones principales */
-#logreg-forms .btn {
-    cursor: pointer;
-}
-
-/* Botones de mostrar/ocultar contraseña */
-#show_password, 
-#show_password1, 
-#show_password2 {
-    cursor: pointer;
-}
-
-/* Campos de formulario (cursor de texto) */
-#logreg-forms .form-control {
-    cursor: text;
-}
-
-/* Iconos de inputs (no clickeables) */
 #logreg-forms .input-group-text {
-    cursor: default;
+    min-width: 48px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 12px;
+    background: #F8FBFE;
+    color: var(--izzy-navy);
+    border-color: var(--izzy-border);
+    font-weight: 700;
 }
 
-/* Enlaces */
+#logreg-forms .input-group-prepend .input-group-text {
+    border-radius: 9px 0 0 9px;
+}
+
+#logreg-forms .input-group-append .input-group-text {
+    border-radius: 0 9px 9px 0;
+}
+
+#logreg-forms .input-group-text i {
+    color: var(--izzy-blue) !important;
+    font-size: 16px;
+}
+
+#logreg-forms .form-control {
+    min-width: 0;
+    height: 48px;
+    padding: 10px 12px;
+    border: 1px solid var(--izzy-border);
+    border-radius: 9px;
+    background: #FFFFFF;
+    color: var(--izzy-text);
+    font-size: 14px;
+    box-shadow: none;
+    transition: border-color .18s ease, box-shadow .18s ease, background .18s ease;
+}
+
+#logreg-forms .input-group-prepend + .form-control {
+    border-left: 0;
+    border-radius: 0 9px 9px 0;
+}
+
+#logreg-forms .input-group-prepend + .form-control:not(:last-child) {
+    border-radius: 0;
+}
+
+#logreg-forms .form-control:focus {
+    border-color: var(--izzy-blue);
+    box-shadow: var(--izzy-focus);
+    background: #FFFFFF;
+    outline: 0;
+}
+
+#logreg-forms .input-group:focus-within .input-group-text {
+    border-color: var(--izzy-blue);
+    background: var(--izzy-blue-soft);
+}
+
+#logreg-forms .form-control::placeholder { color: #94A3B5; }
+
+#groupDB .form-control {
+    text-align: center;
+    font-weight: 700;
+}
+
+#logreg-forms .btn {
+    min-height: 46px;
+    height: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 9px;
+    border: 1px solid transparent;
+    font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0;
+    white-space: normal;
+    box-shadow: none;
+    transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+
+#logreg-forms .btn i,
+#logreg-forms .btn span { margin: 0; }
+
+#logreg-forms .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(11, 31, 82, .12);
+}
+
+#logreg-forms .btn:focus {
+    box-shadow: var(--izzy-focus) !important;
+    outline: 0;
+}
+
+#logreg-forms .btn-primary {
+    background: var(--izzy-navy);
+    border-color: var(--izzy-navy);
+    color: #FFFFFF;
+}
+
+#logreg-forms .btn-primary:hover,
+#logreg-forms .btn-primary:focus {
+    background: #102A66;
+    border-color: #102A66;
+    color: #FFFFFF;
+}
+
+#show_password,
+#show_password1,
+#show_password2 {
+    width: 52px;
+    min-width: 52px;
+    min-height: 48px !important;
+    padding: 0 !important;
+    border-radius: 0 9px 9px 0 !important;
+    background: #F8FBFE !important;
+    border: 1px solid var(--izzy-border) !important;
+    border-left: 0 !important;
+    color: var(--izzy-blue) !important;
+}
+
+#show_password:hover,
+#show_password1:hover,
+#show_password2:hover {
+    background: var(--izzy-blue-soft) !important;
+    color: var(--izzy-navy) !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
 #logreg-forms a {
-    cursor: pointer;
+    color: var(--izzy-blue);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#logreg-forms a:hover,
+#logreg-forms a:focus {
+    color: var(--izzy-navy);
+    text-decoration: none;
+}
+
+#forgot_pswd,
+#cancel_reset,
+#cancel_signup {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+}
+
+#forgot_pswd { width: 100%; }
+
+#logreg-forms hr {
+    margin: 22px 0;
+    border: 0;
+    border-top: 1px solid var(--izzy-border);
+}
+
+#logreg-forms .footer-copyright {
+    color: var(--izzy-muted);
+    font-size: 12px;
+}
+
+#logreg-forms .footer-copyright .navbar-text {
+    margin: 4px 0 0;
+    padding: 0;
+    color: var(--izzy-muted) !important;
+}
+
+#logreg-forms .RespuestaAjax { width: 100%; }
+
+.tooltip-inner {
+    max-width: 280px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    background: var(--izzy-navy);
+    font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+    font-size: 12px;
+}
+
+.notyf { font-family: 'Manrope', 'Segoe UI', Arial, sans-serif; }
+
+@media (max-width: 767.98px) {
+    body {
+        align-items: flex-start;
+        padding: 18px 12px;
+    }
+
+    #logreg-forms { max-width: 100%; }
+
+    #logreg-forms .form-signin,
+    #logreg-forms .form-reset,
+    #logreg-forms .form-signup {
+        padding: 26px 20px;
+        border-radius: 14px;
+    }
+
+    #logreg-forms img { width: min(100%, 250px) !important; }
+}
+
+@media (max-width: 479.98px) {
+    body { padding: 10px 8px; }
+
+    #logreg-forms .form-signin,
+    #logreg-forms .form-reset,
+    #logreg-forms .form-signup {
+        padding: 22px 14px;
+        border-radius: 12px;
+    }
+
+    #logreg-forms h1 { font-size: 21px; }
+
+    #logreg-forms .input-group-text { min-width: 44px; padding: 0 9px; }
+
+    #logreg-forms .form-control { font-size: 13px; }
+
+    #logreg-forms .input-group-append .input-group-text {
+        font-size: 11px;
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #logreg-forms .btn,
+    #logreg-forms .form-control,
+    #logreg-forms .input-group-text { transition: none; }
+
+    #logreg-forms .btn:hover { transform: none; }
 }
