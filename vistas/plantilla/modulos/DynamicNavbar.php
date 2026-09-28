@@ -116,10 +116,10 @@ class DynamicNavbar {
         $key = strtolower((string)$name);
 
         $map = [
-            'dashboard' => 'layout-dashboard',
+            'dashboard' => 'home',
             'ventas' => 'shopping-cart',
-            'compras' => 'truck-delivery',
-            'almacen' => 'package',
+            'compras' => 'shopping-bag',
+            'almacen' => 'building-warehouse',
             'contabilidad' => 'calculator',
             'reportes' => 'chart-bar',
             'configuracion' => 'settings',
