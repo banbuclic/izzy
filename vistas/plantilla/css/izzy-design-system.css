@@ -1,0 +1,105 @@
+/* ============================================================
+   IZZY DESIGN SYSTEM
+   Base visual compartida para el rediseño 2026.
+   Esta hoja define tokens y primitivas; su adopción será gradual.
+   ============================================================ */
+
+:root {
+  /* Brand / navigation */
+  --izzy-navy-950: #0f2233;
+  --izzy-navy-900: #163247;
+  --izzy-navy-800: #1d4058;
+  --izzy-teal-600: #248f95;
+  --izzy-teal-500: #35a3a8;
+  --izzy-teal-100: #e8f6f6;
+
+  /* Surfaces */
+  --izzy-bg: #f5f7fa;
+  --izzy-surface: #ffffff;
+  --izzy-surface-soft: #f9fbfc;
+  --izzy-border: #dfe7ee;
+  --izzy-border-strong: #cbd7e1;
+
+  /* Typography */
+  --izzy-text: #17283f;
+  --izzy-text-muted: #68778d;
+  --izzy-text-soft: #7c8b9e;
+
+  /* Semantic states */
+  --izzy-success: #23855b;
+  --izzy-success-soft: #eaf7f0;
+  --izzy-warning: #b77916;
+  --izzy-warning-soft: #fff6e6;
+  --izzy-danger: #c44f4f;
+  --izzy-danger-soft: #fff0f0;
+  --izzy-info: #2f7fb7;
+  --izzy-info-soft: #edf6fc;
+
+  /* Shape / depth */
+  --izzy-radius-xs: 6px;
+  --izzy-radius-sm: 8px;
+  --izzy-radius-md: 12px;
+  --izzy-radius-lg: 16px;
+  --izzy-shadow-xs: 0 1px 3px rgba(15, 34, 51, 0.05);
+  --izzy-shadow-sm: 0 4px 14px rgba(15, 34, 51, 0.06);
+  --izzy-shadow-md: 0 10px 28px rgba(15, 34, 51, 0.08);
+
+  /* Interaction */
+  --izzy-focus-ring: 0 0 0 3px rgba(36, 143, 149, 0.18);
+  --izzy-transition: 160ms ease;
+
+  /* Layout */
+  --izzy-content-max: 1600px;
+  --izzy-control-height: 40px;
+}
+
+/* Shared shell primitives. These selectors are intentionally opt-in
+   during the pilot to avoid changing legacy modules before validation. */
+.izzy-ui-surface {
+  background: var(--izzy-surface);
+  border: 1px solid var(--izzy-border);
+  border-radius: var(--izzy-radius-md);
+  box-shadow: var(--izzy-shadow-xs);
+}
+
+.izzy-ui-card {
+  background: var(--izzy-surface);
+  border: 1px solid var(--izzy-border);
+  border-radius: var(--izzy-radius-md);
+  box-shadow: var(--izzy-shadow-sm);
+  color: var(--izzy-text);
+  transition: border-color var(--izzy-transition), box-shadow var(--izzy-transition), transform var(--izzy-transition);
+}
+
+.izzy-ui-card:hover {
+  border-color: var(--izzy-border-strong);
+  box-shadow: var(--izzy-shadow-md);
+}
+
+.izzy-ui-muted {
+  color: var(--izzy-text-muted) !important;
+}
+
+.izzy-ui-icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: var(--izzy-teal-100);
+  color: var(--izzy-teal-600);
+  border: 1px solid #d4ecec;
+}
+
+.izzy-ui-focus:focus,
+.izzy-ui-focus:focus-visible {
+  outline: 0;
+  box-shadow: var(--izzy-focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .izzy-ui-card {
+    transition: none;
+  }
+}
