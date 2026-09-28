@@ -181,15 +181,17 @@
 
         left = Math.max(viewportGap, Math.min(left, window.innerWidth - panelRect.width - viewportGap));
 
-        var preferredTop = rect.top - 4;
-        var top = Math.max(viewportGap, preferredTop);
-        var bottomOverflow = (top + panelRect.height + viewportGap) - window.innerHeight;
+        // En escritorio buscamos que el cuadro quede visualmente centrado
+        // respecto al módulo que lo activa, subiéndolo cuando tenga muchas opciones.
+        var triggerCenter = rect.top + (rect.height / 2);
+        var centeredTop = triggerCenter - (panelRect.height / 2);
+        var top = Math.max(viewportGap, centeredTop);
 
-        if (bottomOverflow > 0) {
-            top = Math.max(viewportGap, top - bottomOverflow);
+        if (top + panelRect.height > window.innerHeight - viewportGap) {
+            top = Math.max(viewportGap, window.innerHeight - panelRect.height - viewportGap);
         }
 
-        var arrowTop = rect.top + (rect.height / 2) - top - 6;
+        var arrowTop = triggerCenter - top - 6;
         arrowTop = Math.max(14, Math.min(panelRect.height - 20, arrowTop));
 
         panel.style.left = Math.round(left) + 'px';
