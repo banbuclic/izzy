@@ -7,7 +7,7 @@
         <ol class="breadcrumb-harmony">
             <li class="breadcrumb-item active">
                 <?php echo izzyTablerIcon('layout-dashboard', 'breadcrumb-icon'); ?>
-                <span>Dashboard</span>
+                <span>Inicio</span>
             </li>
         </ol>
     </div>
