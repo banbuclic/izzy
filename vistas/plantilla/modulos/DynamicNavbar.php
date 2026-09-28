@@ -188,7 +188,6 @@ class DynamicNavbar {
                 $html .= '
                 <a class="nav-link collapsed link izzy-sidebar-module izzy-sidebar-module-has-flyout" href="#" data-toggle="collapse" data-target="#collapse' . ucfirst($menu_name) . '"
                     data-flyout-target="#collapse' . ucfirst($menu_name) . '"
-                    data-flyout-title="' . htmlspecialchars(ucfirst($menu_descripcion), ENT_QUOTES, 'UTF-8') . '"
                     aria-expanded="false" aria-controls="collapse' . ucfirst($menu_name) . '" id="' . $menu_name . '" ' . $display . '>
                     <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($menu_name, $menu_icon)) . '</div>
                     <span class="menu-text">' . ucfirst($menu_descripcion) . '</span>
