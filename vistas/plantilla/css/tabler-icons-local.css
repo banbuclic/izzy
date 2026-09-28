@@ -2,3 +2,7 @@
 .ti-svg{width:1.25em;height:1.25em;display:inline-block;flex:0 0 auto;vertical-align:-.22em;color:currentColor;overflow:visible}
 .ti-svg-sm{width:1em;height:1em}.ti-svg-md{width:1.25em;height:1.25em}.ti-svg-lg{width:1.5em;height:1.5em}
 button .ti-svg,a .ti-svg{pointer-events:none}
+
+.ti-spin{animation:izzy-ti-spin .85s linear infinite}
+@keyframes izzy-ti-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion: reduce){.ti-spin{animation:none}}
