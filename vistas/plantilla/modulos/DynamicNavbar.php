@@ -110,9 +110,55 @@ class DynamicNavbar {
         return true;
     }
     
+    // Iconografía oficial del rediseño IZZY (Tabler Icons).
+    // Mantiene compatibilidad con los nombres/rutas existentes de la BD.
+    private function iconoTabler($name, $legacyIcon = '') {
+        $key = strtolower((string)$name);
+
+        $map = [
+            'dashboard' => 'layout-dashboard',
+            'ventas' => 'shopping-cart',
+            'compras' => 'truck-delivery',
+            'almacen' => 'package',
+            'contabilidad' => 'calculator',
+            'reportes' => 'chart-bar',
+            'configuracion' => 'settings',
+            'recursoshumanos' => 'users',
+            'sistema' => 'device-desktop-cog',
+
+            'clientes' => 'users',
+            'facturas' => 'file-invoice',
+            'cajas' => 'calculator',
+            'cotizacion' => 'file-invoice',
+            'proveedores' => 'truck-delivery',
+            'facturacompras' => 'shopping-cart',
+            'productos' => 'package',
+            'inventario' => 'package',
+            'transferencia' => 'arrow-right',
+            'reporte_historial' => 'chart-bar',
+            'reporteventas' => 'chart-bar',
+            'reportecompras' => 'chart-bar',
+            'cxcclientes' => 'file-dollar',
+            'cxpproveedores' => 'file-dollar',
+            'users' => 'users',
+            'empresa' => 'settings',
+            'nomina' => 'users',
+            'asistencia' => 'calendar',
+            'colaboradores' => 'users',
+            'contrato' => 'file-invoice',
+            'registrarmenu' => 'settings',
+            'registarmenus' => 'settings',
+            'registrarplanes' => 'settings',
+            'confplanes' => 'settings',
+            'asignacionplanes' => 'settings'
+        ];
+
+        return $map[$key] ?? 'layout-grid';
+    }
+
     // Generar el HTML del navbar dinámicamente
     public function generarNavbar() {
-        $html = '<nav class="sb-sidenav accordion bg-color-navarlateral nav-loading" id="sidenavAccordion">
+        $html = '<nav class="sb-sidenav accordion bg-color-navarlateral nav-loading izzy-sidebar" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">';
 
@@ -133,18 +179,20 @@ class DynamicNavbar {
             // Si no hay submenús, es un enlace directo
             if (empty($submenus)) {
                 $html .= '
-                <a class="nav-link link" href="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . $menu_name . '/" id="' . $menu_name . '" ' . $display . '>
-                    <div class="sb-nav-link-icon"><i class="' . $menu_icon . '"></i></div>
+                <a class="nav-link link izzy-sidebar-module" href="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . $menu_name . '/" id="' . $menu_name . '" ' . $display . '>
+                    <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($menu_name, $menu_icon)) . '</div>
                     <span class="menu-text">' . $menu_descripcion . '</span>
                 </a>';
             } else {
                 // Si tiene submenús, es un menú desplegable
                 $html .= '
-                <a class="nav-link collapsed link" href="#" data-toggle="collapse" data-target="#collapse' . ucfirst($menu_name) . '"
+                <a class="nav-link collapsed link izzy-sidebar-module izzy-sidebar-module-has-flyout" href="#" data-toggle="collapse" data-target="#collapse' . ucfirst($menu_name) . '"
+                    data-flyout-target="#collapse' . ucfirst($menu_name) . '"
+                    data-flyout-title="' . htmlspecialchars(ucfirst($menu_descripcion), ENT_QUOTES, 'UTF-8') . '"
                     aria-expanded="false" aria-controls="collapse' . ucfirst($menu_name) . '" id="' . $menu_name . '" ' . $display . '>
-                    <div class="sb-nav-link-icon"><i class="' . $menu_icon . '"></i></div>
+                    <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($menu_name, $menu_icon)) . '</div>
                     <span class="menu-text">' . ucfirst($menu_descripcion) . '</span>
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    <div class="sb-sidenav-collapse-arrow">' . izzyTablerIcon('chevron-right', 'izzy-sidebar-chevron') . '</div>
                 </a>
                 <div class="collapse" id="collapse' . ucfirst($menu_name) . '" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav' . ($menu_name == 'reportes' ? ' accordion" id="sidenavAccordionPages"' : '"') . '>';
@@ -163,16 +211,16 @@ class DynamicNavbar {
                     if (empty($submenus1)) {
                         $html .= '
                         <a class="nav-link link" href="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . $submenu_name . '/" id="' . $submenu_name . '" ' . $submenu_display . '>
-                            <div class="sb-nav-link-icon"><i class="' . $submenu_icon . '"></i></div><span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu_descripcion)) . '</span>
+                            <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu_name, $submenu_icon)) . '</div><span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu_descripcion)) . '</span>
                         </a>';
                     } else {
                         // Si tiene submenús de nivel 2, es un menú desplegable
                         $html .= '
                         <a class="nav-link collapsed link" href="#" data-toggle="collapse" data-target="#' . $submenu_name . 'Collapse"
                             aria-expanded="false" aria-controls="' . $submenu_name . 'Collapse" id="' . $submenu_name . '" ' . $submenu_display . '>
-                            <div class="sb-nav-link-icon"><i class="' . $submenu_icon . '"></i></div>
+                            <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu_name, $submenu_icon)) . '</div>
                             <span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu_descripcion)) . '</span>
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down fa-lg"></i></div>
+                            <div class="sb-sidenav-collapse-arrow">' . izzyTablerIcon('chevron-right', 'izzy-sidebar-chevron') . '</div>
                         </a>
                         <div class="collapse" id="' . $submenu_name . 'Collapse" aria-labelledby="headingOne"
                             data-parent="' . ($menu_name == 'reportes' ? '#sidenavAccordionPages' : '#sidenavAccordion') . '">
@@ -187,7 +235,7 @@ class DynamicNavbar {
                             
                             $html .= '
                             <a class="nav-link link" href="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . $submenu1_name . '/" id="' . $submenu1_name . '" ' . $submenu1_display . '>
-                                <div class="sb-nav-link-icon"><i class="' . $submenu1_icon . '"></i></div><span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu1_descripcion)) . '</span>
+                                <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu1_name, $submenu1_icon)) . '</div><span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu1_descripcion)) . '</span>
                             </a>';
                         }
                         
@@ -222,7 +270,7 @@ class DynamicNavbar {
         </div>
         <div class="sb-sidenav-footer">
             <div class="db-badge">
-                <i class="fas fa-database db-icon"></i>
+                ' . izzyTablerIcon('database', 'db-icon') . '
                 <div class="db-info">
                     <span class="db-label">Base de Datos:</span>
                     <span class="db-name">' . htmlspecialchars($nombre_db_final, ENT_QUOTES, 'UTF-8') . '</span>
@@ -231,7 +279,7 @@ class DynamicNavbar {
         </div>
         
         <a href="' . $url_ws . '" class="float-ws" target="_blank" data-toggle="tooltip" data-placement="top" title="'.$title.'">
-           <i class="fab fa-whatsapp my-float-ws"></i>
+           ' . izzyTablerIcon('brand-whatsapp', 'my-float-ws') . '
         </a>
         </nav>';        
         
