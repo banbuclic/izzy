@@ -1,11 +1,12 @@
 <link rel="stylesheet" href="<?php echo SERVERURL; ?>vistas/plantilla/css/dashboard.css">
+<link rel="stylesheet" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/dashboard-redesign-pilot.css">
 
 <div class="container-fluid">
     <!-- Breadcrumb para Dashboard -->
     <div class="breadcrumb-container">
         <ol class="breadcrumb-harmony">
             <li class="breadcrumb-item active">
-                <i class="fas fa-home breadcrumb-icon"></i>
+                <?php echo izzyTablerIcon('layout-dashboard', 'breadcrumb-icon'); ?>
                 <span>Dashboard</span>
             </li>
         </ol>
@@ -16,7 +17,7 @@
         <div class="card-header dashboard-section-header">
             <div class="dashboard-section-heading">
                 <div class="dashboard-section-icon">
-                    <i class="fas fa-chart-pie"></i>
+                    <?php echo izzyTablerIcon('chart-pie'); ?>
                 </div>
                 <div>
                     <strong>Resumen del Dashboard</strong>
@@ -30,7 +31,7 @@
                     data-target="#dashboard_kpis_body"
                     data-storage-key="izzy_dashboard_kpis_visible"
                     aria-expanded="true">
-                <i class="fas fa-chevron-up mr-1"></i>
+                <?php echo izzyTablerIcon('chevron-up', 'mr-1'); ?>
                 <span>Ocultar</span>
             </button>
         </div>
@@ -48,12 +49,12 @@
                                 <h2 class="mb-0" id="main_clientes">0</h2>
                             </div>
                             <div class="icon-circle">
-                                <i class="fas fa-user-tie"></i>
+                                <?php echo izzyTablerIcon('users'); ?>
                             </div>
                         </div>
                         <div class="mt-3">
                             <span class="card-footer-text">
-                                <i class="fas fa-info-circle mr-1"></i> Nuestros Clientes
+                                <?php echo izzyTablerIcon('info-circle', 'mr-1'); ?> Nuestros Clientes
                             </span>
                         </div>
                     </div>
@@ -72,12 +73,12 @@
                                 <h2 class="mb-0" id="main_proveedores">0</h2>
                             </div>
                             <div class="icon-circle">
-                                <i class="fas fa-user-alt"></i>
+                                <?php echo izzyTablerIcon('truck-delivery'); ?>
                             </div>
                         </div>
                         <div class="mt-3">
                             <span class="card-footer-text">
-                                <i class="fas fa-info-circle mr-1"></i> Nuestros Proveedores
+                                <?php echo izzyTablerIcon('info-circle', 'mr-1'); ?> Nuestros Proveedores
                             </span>
                         </div>
                     </div>
@@ -96,12 +97,12 @@
                                 <h2 class="mb-0" id="main_facturas">0</h2>
                             </div>
                             <div class="icon-circle">
-                                <i class="fas fa-file-invoice"></i>
+                                <?php echo izzyTablerIcon('file-invoice'); ?>
                             </div>
                         </div>
                         <div class="mt-3">
                             <span class="card-footer-text" id="mes_factura">
-                                <i class="fas fa-calendar-alt mr-1"></i> <?= date('F Y'); ?>
+                                <?php echo izzyTablerIcon('calendar', 'mr-1'); ?> <?= date('F Y'); ?>
                             </span>
                         </div>
                     </div>
@@ -120,12 +121,12 @@
                                 <h2 class="mb-0" id="main_compras">0</h2>
                             </div>
                             <div class="icon-circle">
-                                <i class="fas fa-shopping-cart"></i>
+                                <?php echo izzyTablerIcon('shopping-cart'); ?>
                             </div>
                         </div>
                         <div class="mt-3">
                             <span class="card-footer-text" id="mes_compra">
-                                <i class="fas fa-calendar-alt mr-1"></i> <?= date('F Y'); ?>
+                                <?php echo izzyTablerIcon('calendar', 'mr-1'); ?> <?= date('F Y'); ?>
                             </span>
                         </div>
                     </div>
@@ -141,7 +142,7 @@
         <div class="card-header dashboard-section-header">
             <div class="dashboard-section-heading">
                 <div class="dashboard-section-icon">
-                    <i class="fas fa-chart-bar"></i>
+                    <?php echo izzyTablerIcon('chart-bar'); ?>
                 </div>
                 <div>
                     <strong>Gráficos del Dashboard</strong>
@@ -155,7 +156,7 @@
                     data-target="#dashboard_graficos_body"
                     data-storage-key="izzy_dashboard_graficos_visible"
                     aria-expanded="true">
-                <i class="fas fa-chevron-up mr-1"></i>
+                <?php echo izzyTablerIcon('chevron-up', 'mr-1'); ?>
                 <span>Ocultar</span>
             </button>
         </div>
@@ -167,7 +168,7 @@
 			<div class="chart-card h-100">
 				<div class="chart-header">
 					<h3 class="chart-title">
-						<i class="fas fa-chart-bar"></i>
+						<?php echo izzyTablerIcon('chart-bar'); ?>
 						Reporte Ventas
 					</h3>
 					<div class="chart-actions">
@@ -181,10 +182,10 @@
 						</div>
 						<a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteVentas/" 
 						class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
-							<i class="fas fa-arrow-right"></i>
+							<?php echo izzyTablerIcon('arrow-right'); ?>
 						</a>
 						<button class="chart-btn download-ventas" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
-							<i class="fas fa-download"></i>
+							<?php echo izzyTablerIcon('download'); ?>
 						</button>
                         <button type="button"
                                 class="chart-btn dashboard-chart-toggle"
@@ -194,7 +195,7 @@
                                 data-placement="top"
                                 title="Ocultar gráfico"
                                 aria-expanded="true">
-                            <i class="fas fa-chevron-up"></i>
+                            <?php echo izzyTablerIcon('chevron-up'); ?>
                         </button>
 					</div>
 				</div>
@@ -216,7 +217,7 @@
 			<div class="chart-card h-100">
 				<div class="chart-header">
 					<h3 class="chart-title">
-						<i class="fas fa-chart-bar"></i>
+						<?php echo izzyTablerIcon('chart-bar'); ?>
 						Reporte Compras
 					</h3>
 					<div class="chart-actions">
@@ -230,10 +231,10 @@
 						</div>
 						<a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>reporteCompras/" 
 						class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
-							<i class="fas fa-arrow-right"></i>
+							<?php echo izzyTablerIcon('arrow-right'); ?>
 						</a>
 						<button class="chart-btn download-compras" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
-							<i class="fas fa-download"></i>
+							<?php echo izzyTablerIcon('download'); ?>
 						</button>
                         <button type="button"
                                 class="chart-btn dashboard-chart-toggle"
@@ -243,7 +244,7 @@
                                 data-placement="top"
                                 title="Ocultar gráfico"
                                 aria-expanded="true">
-                            <i class="fas fa-chevron-up"></i>
+                            <?php echo izzyTablerIcon('chevron-up'); ?>
                         </button>
 					</div>
 				</div>
@@ -265,7 +266,7 @@
 			<div class="chart-card">
 				<div class="chart-header">
 					<h3 class="chart-title">
-						<i class="fas fa-star"></i>
+						<?php echo izzyTablerIcon('star'); ?>
 						Top 5 Productos Más Vendidos en 3 Meses
 					</h3>
 					<div class="chart-actions">
@@ -279,10 +280,10 @@
 						</div>
 						<a href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>transferencia/" 
 						class="chart-btn" data-toggle="tooltip" data-placement="top" title="Ver reporte completo">
-							<i class="fas fa-arrow-right"></i>
+							<?php echo izzyTablerIcon('arrow-right'); ?>
 						</a>
 						<button class="chart-btn download-top-productos" data-toggle="tooltip" data-placement="top" title="Descargar gráfico">
-							<i class="fas fa-download"></i>
+							<?php echo izzyTablerIcon('download'); ?>
 						</button>
                         <button type="button"
                                 class="chart-btn dashboard-chart-toggle"
@@ -292,7 +293,7 @@
                                 data-placement="top"
                                 title="Ocultar gráfico"
                                 aria-expanded="true">
-                            <i class="fas fa-chevron-up"></i>
+                            <?php echo izzyTablerIcon('chevron-up'); ?>
                         </button>
 					</div>
 				</div>
@@ -320,7 +321,7 @@
                 <div class="card-header dashboard-fiscales-header">
                     <div class="dashboard-fiscales-heading">
                         <div class="dashboard-fiscales-heading-icon">
-                            <i class="fas fa-file-invoice-dollar"></i>
+                            <?php echo izzyTablerIcon('file-dollar'); ?>
                         </div>
                         <div>
                             <strong>Documentos Fiscales</strong>
@@ -337,7 +338,7 @@
                            data-placement="top"
                            title="Ver secuencias">
                             <span>Ver secuencias</span>
-                            <i class="fas fa-arrow-right"></i>
+                            <?php echo izzyTablerIcon('arrow-right'); ?>
                         </a>
 
                         <button type="button"
@@ -346,7 +347,7 @@
                                 data-target="#dashboard_fiscales_body"
                                 data-storage-key="izzy_dashboard_fiscales_visible"
                                 aria-expanded="true">
-                            <i class="fas fa-chevron-up mr-1"></i>
+                            <?php echo izzyTablerIcon('chevron-up', 'mr-1'); ?>
                             <span>Ocultar</span>
                         </button>
                     </div>
@@ -357,13 +358,13 @@
                     <div class="dashboard-fiscales-toolbar">
                         <div class="dashboard-fiscales-actions">
                             <button type="button" class="btn btn-secondary table_actualizar ocultar" id="btn_dashboard_fiscales_actualizar">
-                                <i class="fas fa-sync-alt mr-1"></i> Actualizar
+                                <?php echo izzyTablerIcon('refresh', 'mr-1'); ?> Actualizar
                             </button>
                             <button type="button" class="btn btn-success table_reportes ocultar" id="btn_dashboard_fiscales_excel">
-                                <i class="fas fa-file-excel mr-1"></i> Excel
+                                <?php echo izzyTablerIcon('file-spreadsheet', 'mr-1'); ?> Excel
                             </button>
                             <button type="button" class="btn btn-danger table_reportes ocultar" id="btn_dashboard_fiscales_pdf">
-                                <i class="fas fa-file-pdf mr-1"></i> PDF
+                                <?php echo izzyTablerIcon('file-type-pdf', 'mr-1'); ?> PDF
                             </button>
                         </div>
 
@@ -388,7 +389,7 @@
                                         data-view="detalle"
                                         title="Vista detalle"
                                         aria-pressed="true">
-                                    <i class="fas fa-list-ul"></i>
+                                    <?php echo izzyTablerIcon('list-details'); ?>
                                     <span>Detalle</span>
                                 </button>
 
@@ -397,7 +398,7 @@
                                         data-view="miniatura"
                                         title="Vista miniatura"
                                         aria-pressed="false">
-                                    <i class="fas fa-th-large"></i>
+                                    <?php echo izzyTablerIcon('layout-grid'); ?>
                                     <span>Miniatura</span>
                                 </button>
                             </div>
@@ -406,7 +407,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <i class="fas fa-search"></i>
+                                            <?php echo izzyTablerIcon('search'); ?>
                                         </span>
                                     </div>
                                     <input type="search"
@@ -419,7 +420,7 @@
                                             class="dashboard-fiscales-search-clear"
                                             aria-label="Limpiar búsqueda"
                                             title="Limpiar búsqueda">
-                                        <i class="fas fa-times"></i>
+                                        <?php echo izzyTablerIcon('x'); ?>
                                     </button>
                                 </div>
                             </div>
@@ -427,12 +428,12 @@
                     </div>
 
                     <div id="dashboard_fiscales_loading" class="dashboard-fiscales-state d-none" role="status" aria-live="polite">
-                        <i class="fas fa-spinner fa-spin"></i>
+                        <?php echo izzyTablerIcon('loader-2', 'ti-spin'); ?>
                         <span>Cargando documentos fiscales...</span>
                     </div>
 
                     <div id="dashboard_fiscales_empty" class="dashboard-fiscales-state d-none" role="status" aria-live="polite">
-                        <i class="fas fa-inbox"></i>
+                        <?php echo izzyTablerIcon('inbox'); ?>
                         <div>
                             <strong>No se encontraron documentos fiscales</strong>
                             <small>No hay secuencias disponibles para mostrar.</small>
