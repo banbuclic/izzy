@@ -1,0 +1,287 @@
+@import url("./izzy-design-system.css");
+
+/* ============================================================
+   IZZY 2026 — SIDEBAR PILOT
+   Barra lateral navy + submódulos flotantes en escritorio.
+   En móvil/tablet conserva el comportamiento collapse existente.
+   ============================================================ */
+
+.izzy-sidebar {
+    background: var(--izzy-navy) !important;
+    color: var(--izzy-white);
+}
+
+.izzy-sidebar .sb-sidenav-menu {
+    padding: 10px 0 88px;
+}
+
+.izzy-sidebar .sb-sidenav-menu > .nav {
+    padding: 0 10px;
+}
+
+.izzy-sidebar .nav-link {
+    min-height: 44px;
+    margin: 3px 0;
+    padding: 10px 12px !important;
+    border-radius: 10px;
+    color: rgba(255, 255, 255, .78) !important;
+    font-family: var(--izzy-font-family);
+    font-size: 13px;
+    font-weight: 650;
+    line-height: 1.25;
+    transition: background-color var(--izzy-transition), color var(--izzy-transition);
+}
+
+.izzy-sidebar .nav-link:hover,
+.izzy-sidebar .nav-link:focus,
+.izzy-sidebar .nav-link.active,
+.izzy-sidebar .izzy-sidebar-module.is-flyout-open {
+    background: rgba(31, 195, 243, .14) !important;
+    color: var(--izzy-white) !important;
+}
+
+.izzy-sidebar .nav-link:focus-visible {
+    outline: 0;
+    box-shadow: inset var(--izzy-focus-ring);
+}
+
+.izzy-sidebar .sb-nav-link-icon {
+    width: 24px;
+    min-width: 24px;
+    margin-right: 8px !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, .66);
+}
+
+.izzy-sidebar .nav-link:hover .sb-nav-link-icon,
+.izzy-sidebar .nav-link:focus .sb-nav-link-icon,
+.izzy-sidebar .nav-link.active .sb-nav-link-icon,
+.izzy-sidebar .izzy-sidebar-module.is-flyout-open .sb-nav-link-icon {
+    color: var(--izzy-cyan);
+}
+
+.izzy-sidebar .sb-nav-link-icon .ti-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.izzy-sidebar .menu-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.izzy-sidebar .sb-sidenav-collapse-arrow {
+    margin-left: auto;
+    color: rgba(255, 255, 255, .46);
+}
+
+.izzy-sidebar .izzy-sidebar-chevron {
+    width: 16px;
+    height: 16px;
+}
+
+.izzy-sidebar .sb-sidenav-footer {
+    background: rgba(0, 0, 0, .10) !important;
+    border-top: 1px solid rgba(255, 255, 255, .08);
+}
+
+.izzy-sidebar .db-badge {
+    color: rgba(255, 255, 255, .78);
+}
+
+.izzy-sidebar .db-icon {
+    color: var(--izzy-cyan);
+}
+
+/* Flyout de escritorio: se agrega al body para que nunca quede recortado
+   por el scroll del sidebar. */
+.izzy-sidebar-flyout {
+    position: fixed;
+    z-index: 1090;
+    width: 310px;
+    max-width: calc(100vw - 32px);
+    max-height: calc(100vh - 80px);
+    display: none;
+    overflow: hidden;
+    border: 1px solid var(--izzy-border);
+    border-radius: 14px;
+    background: var(--izzy-surface);
+    box-shadow: 0 16px 40px rgba(11, 31, 82, .18);
+    font-family: var(--izzy-font-family);
+    color: var(--izzy-text);
+}
+
+.izzy-sidebar-flyout.is-open {
+    display: block;
+}
+
+.izzy-sidebar-flyout::before {
+    content: "";
+    position: absolute;
+    left: -7px;
+    top: var(--izzy-flyout-arrow-top, 22px);
+    width: 14px;
+    height: 14px;
+    background: var(--izzy-surface);
+    border-left: 1px solid var(--izzy-border);
+    border-bottom: 1px solid var(--izzy-border);
+    transform: rotate(45deg);
+}
+
+.izzy-sidebar-flyout-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 58px;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--izzy-border);
+    background: var(--izzy-surface);
+}
+
+.izzy-sidebar-flyout-header-icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--izzy-blue-soft);
+    color: var(--izzy-cobalt);
+}
+
+.izzy-sidebar-flyout-header-icon .ti-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.izzy-sidebar-flyout-header-copy {
+    min-width: 0;
+}
+
+.izzy-sidebar-flyout-header-copy strong {
+    display: block;
+    color: var(--izzy-navy);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.izzy-sidebar-flyout-header-copy span {
+    display: block;
+    margin-top: 2px;
+    color: var(--izzy-text-muted);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.izzy-sidebar-flyout-body {
+    position: relative;
+    z-index: 1;
+    max-height: calc(100vh - 160px);
+    padding: 8px;
+    overflow-y: auto;
+    background: var(--izzy-surface-soft);
+}
+
+.izzy-flyout-link,
+.izzy-flyout-group-title {
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    width: 100%;
+    padding: 9px 10px;
+    border-radius: 9px;
+    color: var(--izzy-text) !important;
+    text-decoration: none !important;
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.25;
+}
+
+.izzy-flyout-link:hover,
+.izzy-flyout-link:focus {
+    background: var(--izzy-blue-soft);
+    color: var(--izzy-cobalt) !important;
+}
+
+.izzy-flyout-link:focus-visible {
+    outline: 0;
+    box-shadow: var(--izzy-focus-ring);
+}
+
+.izzy-flyout-link .sb-nav-link-icon,
+.izzy-flyout-group-title .sb-nav-link-icon {
+    width: 22px;
+    min-width: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--izzy-blue);
+}
+
+.izzy-flyout-link .ti-svg,
+.izzy-flyout-group-title .ti-svg {
+    width: 18px;
+    height: 18px;
+}
+
+.izzy-flyout-group {
+    padding: 3px 0;
+}
+
+.izzy-flyout-group + .izzy-flyout-group,
+.izzy-flyout-link + .izzy-flyout-group,
+.izzy-flyout-group + .izzy-flyout-link {
+    margin-top: 3px;
+}
+
+.izzy-flyout-group-title {
+    color: var(--izzy-navy) !important;
+    font-weight: 800;
+    background: var(--izzy-navy-soft);
+}
+
+.izzy-flyout-group-items {
+    position: relative;
+    margin: 4px 0 2px 18px;
+    padding-left: 10px;
+    border-left: 1px solid var(--izzy-border);
+}
+
+.izzy-flyout-group-items .izzy-flyout-link {
+    min-height: 36px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    font-size: 11px;
+}
+
+/* En escritorio los submenús ya no ocupan espacio debajo del módulo:
+   se muestran exclusivamente en el panel flotante. */
+@media (min-width: 992px) and (hover: hover) and (pointer: fine) {
+    .izzy-sidebar > .sb-sidenav-menu > .nav > .collapse {
+        display: none !important;
+    }
+
+    .izzy-sidebar .izzy-sidebar-module-has-flyout {
+        cursor: default;
+    }
+}
+
+/* En dispositivos táctiles se conserva Bootstrap Collapse. */
+@media (max-width: 991.98px), (hover: none), (pointer: coarse) {
+    .izzy-sidebar-flyout {
+        display: none !important;
+    }
+
+    .izzy-sidebar .nav-link {
+        border-radius: 8px;
+    }
+}
