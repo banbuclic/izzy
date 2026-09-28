@@ -191,7 +191,11 @@
     box-shadow: var(--izzy-focus-ring);
 }
 
-.izzy-flyout-link .sb-nav-link-icon .sb-nav-link-icon {
+.izzy-flyout-link + .izzy-flyout-link {
+    margin-top: 2px;
+}
+
+.izzy-flyout-link .sb-nav-link-icon {
     width: 21px;
     min-width: 21px;
     margin-right: 0 !important;
@@ -201,7 +205,7 @@
     color: var(--izzy-blue);
 }
 
-.izzy-flyout-link .ti-svg .ti-svg {
+.izzy-flyout-link .ti-svg {
     width: 17px;
     height: 17px;
 }
