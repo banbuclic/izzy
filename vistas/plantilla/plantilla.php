@@ -72,6 +72,7 @@ if (!$esRutaPublicaInicial && !$sesionValida) {
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/select2-izzy.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>fontawesome/css/all.min.css">
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/tabler-icons-local.css" rel="stylesheet">
+    <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/sidebar-redesign.css" rel="stylesheet">
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/notyf.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/img/icono.png">
 <!--     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>ajax/sweetalert/sweetalert.css"
@@ -200,6 +201,7 @@ if (!$esRutaPublicaInicial && !$sesionValida) {
     require_once "./vistas/contenido/modals/vistasModals.php";   
     //Scripts
     require_once "./vistas/plantilla/modulos/script.php";
+    echo '<script src="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . 'vistas/plantilla/js/sidebar-flyout.js"></script>';
     
     //SELECT2 GLOBAL (se carga después de jQuery/bootstrap scripts)
     echo '<script src="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . 'ajax/librerias/select2.min.js"></script>';
