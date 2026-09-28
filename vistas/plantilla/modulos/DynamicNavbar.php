@@ -146,10 +146,9 @@ class DynamicNavbar {
             'asistencia' => 'calendar',
             'colaboradores' => 'users',
             'contrato' => 'file-invoice',
-            'registrarmenu' => 'list-details',
+            // Sistema: exactamente los tres accesos existentes en el módulo histórico.
             'registarmenus' => 'list-details',
             'registrarplanes' => 'layout-grid',
-            'confplanes' => 'settings',
             'asignacionplanes' => 'users'
         ];
 
