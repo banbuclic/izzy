@@ -85,27 +85,11 @@
             var hasNested = !!(next && next.classList && next.classList.contains('collapse'));
 
             if (hasNested) {
-                var group = document.createElement('div');
-                group.className = 'izzy-flyout-group';
-
-                var title = document.createElement('div');
-                title.className = 'izzy-flyout-group-title';
-                title.appendChild(copyIcon(child, ''));
-                var titleText = document.createElement('span');
-                titleText.textContent = itemText(child);
-                title.appendChild(titleText);
-                group.appendChild(title);
-
-                var items = document.createElement('div');
-                items.className = 'izzy-flyout-group-items';
+                // El nivel intermedio solo organiza el menú en la BD.
+                // En el flyout mostramos una lista plana de opciones finales,
+                // sin títulos, subtítulos ni encabezados adicionales.
                 var nestedNav = next.querySelector('nav');
-                var nestedCount = renderNav(nestedNav, items, (depth || 0) + 1);
-
-                if (nestedCount > 0) {
-                    group.appendChild(items);
-                    targetContainer.appendChild(group);
-                    added++;
-                }
+                added += renderNav(nestedNav, targetContainer, (depth || 0) + 1);
 
                 i++;
                 continue;
