@@ -486,3 +486,31 @@ body {
         transition: none !important;
     }
 }
+
+
+/* ============================================================
+   TABLER ICONS — DASHBOARD PILOT
+   Mantiene la misma jerarquía visual de los iconos anteriores.
+   ============================================================ */
+.dashboard-section-icon .ti-svg,
+.dashboard-fiscales-heading-icon .ti-svg,
+.dashboard-card .icon-circle .ti-svg {
+    width: 1.35em;
+    height: 1.35em;
+}
+
+.dashboard-card .card-footer-text .ti-svg,
+.chart-title .ti-svg,
+.dashboard-fiscal-section-title .ti-svg,
+.dashboard-fiscal-detail-icon .ti-svg {
+    color: var(--izzy-blue);
+}
+
+.chart-btn .ti-svg,
+.dashboard-toggle-btn .ti-svg,
+.dashboard-fiscales-link .ti-svg,
+.dashboard-fiscales-view-btn .ti-svg,
+.dashboard-page-btn .ti-svg {
+    width: 1.1em;
+    height: 1.1em;
+}
