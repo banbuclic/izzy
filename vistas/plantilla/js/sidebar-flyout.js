@@ -139,59 +139,58 @@
 
         panel.innerHTML = '';
 
-        var header = document.createElement('div');
-        header.className = 'izzy-sidebar-flyout-header';
-
-        var headerIcon = document.createElement('span');
-        headerIcon.className = 'izzy-sidebar-flyout-header-icon';
-        var originalIcon = trigger.querySelector('.sb-nav-link-icon');
-        if (originalIcon && originalIcon.firstElementChild) {
-            headerIcon.appendChild(originalIcon.firstElementChild.cloneNode(true));
-        }
-
-        var copy = document.createElement('div');
-        copy.className = 'izzy-sidebar-flyout-header-copy';
-        var strong = document.createElement('strong');
-        strong.textContent = trigger.getAttribute('data-flyout-title') || itemText(trigger);
-        var small = document.createElement('span');
-        small.textContent = 'Submódulos';
-        copy.appendChild(strong);
-        copy.appendChild(small);
-
-        header.appendChild(headerIcon);
-        header.appendChild(copy);
-
         var body = document.createElement('div');
         body.className = 'izzy-sidebar-flyout-body';
 
+        // Se respeta exactamente el orden y el texto que ya renderizó
+        // DynamicNavbar desde la base de datos.
         var count = renderNav(sourceNav, body, 0);
         if (!count) return false;
 
-        panel.appendChild(header);
         panel.appendChild(body);
         return true;
     }
 
     function positionFlyout(trigger) {
         var rect = trigger.getBoundingClientRect();
-        var gap = 10;
+        var gap = 9;
         var viewportGap = 12;
 
+        panel.classList.remove('opens-left');
         panel.style.left = '0px';
         panel.style.top = '0px';
+        panel.style.maxHeight = Math.max(120, window.innerHeight - (viewportGap * 2)) + 'px';
 
-        var panelRect = panel.getBoundingClientRect();
-        var left = rect.right + gap;
-
-        if (left + panelRect.width > window.innerWidth - viewportGap) {
-            left = Math.max(viewportGap, rect.left - panelRect.width - gap);
+        var body = panel.querySelector('.izzy-sidebar-flyout-body');
+        if (body) {
+            body.style.maxHeight = Math.max(110, window.innerHeight - (viewportGap * 2)) + 'px';
         }
 
-        var top = rect.top;
-        var maxTop = Math.max(64, window.innerHeight - panelRect.height - viewportGap);
-        top = Math.min(Math.max(64, top), maxTop);
+        var panelRect = panel.getBoundingClientRect();
+        var spaceRight = window.innerWidth - rect.right - viewportGap;
+        var spaceLeft = rect.left - viewportGap;
+        var openLeft = spaceRight < panelRect.width + gap && spaceLeft > spaceRight;
 
-        var arrowTop = Math.max(18, Math.min(panelRect.height - 24, rect.top + (rect.height / 2) - top - 7));
+        var left;
+        if (openLeft) {
+            panel.classList.add('opens-left');
+            left = rect.left - panelRect.width - gap;
+        } else {
+            left = rect.right + gap;
+        }
+
+        left = Math.max(viewportGap, Math.min(left, window.innerWidth - panelRect.width - viewportGap));
+
+        var preferredTop = rect.top - 4;
+        var top = Math.max(viewportGap, preferredTop);
+        var bottomOverflow = (top + panelRect.height + viewportGap) - window.innerHeight;
+
+        if (bottomOverflow > 0) {
+            top = Math.max(viewportGap, top - bottomOverflow);
+        }
+
+        var arrowTop = rect.top + (rect.height / 2) - top - 6;
+        arrowTop = Math.max(14, Math.min(panelRect.height - 20, arrowTop));
 
         panel.style.left = Math.round(left) + 'px';
         panel.style.top = Math.round(top) + 'px';
