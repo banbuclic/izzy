@@ -146,11 +146,11 @@ class DynamicNavbar {
             'asistencia' => 'calendar',
             'colaboradores' => 'users',
             'contrato' => 'file-invoice',
-            'registrarmenu' => 'settings',
-            'registarmenus' => 'settings',
-            'registrarplanes' => 'settings',
+            'registrarmenu' => 'list-details',
+            'registarmenus' => 'list-details',
+            'registrarplanes' => 'layout-grid',
             'confplanes' => 'settings',
-            'asignacionplanes' => 'settings'
+            'asignacionplanes' => 'users'
         ];
 
         return $map[$key] ?? 'layout-grid';
