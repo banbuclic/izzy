@@ -169,6 +169,10 @@ class DynamicNavbar {
             $menu_id = $menu['menu_id'];
             $menu_name = $menu['name'];
             $menu_descripcion = $menu['descripcion'];
+            // Cambio visual únicamente: la ruta interna sigue siendo "dashboard".
+            if (strtolower((string)$menu_name) === 'dashboard') {
+                $menu_descripcion = 'Inicio';
+            }
             $menu_icon = $menu['icon'];
             $display = $this->tienePermiso($menu_id, 'menu') ? '' : 'style="display:none"';
             
