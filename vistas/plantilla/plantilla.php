@@ -3,6 +3,8 @@ if(!isset($_SESSION)){
     session_start(['name'=>'SD']); 
 }
 
+require_once "./vistas/plantilla/modulos/tablerIconHelper.php";
+
 /* ============================================================
    PROTECCIÓN GLOBAL DE RUTAS PRIVADAS
    ------------------------------------------------------------
@@ -69,6 +71,7 @@ if (!$esRutaPublicaInicial && !$sesionValida) {
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/select2.min.css" rel="stylesheet">
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/select2-izzy.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>fontawesome/css/all.min.css">
+    <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/tabler-icons-local.css" rel="stylesheet">
     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/css/notyf.min.css" rel="stylesheet" />
     <link rel="shortcut icon" href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>vistas/plantilla/img/icono.png">
 <!--     <link href="<?php echo htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8'); ?>ajax/sweetalert/sweetalert.css"
