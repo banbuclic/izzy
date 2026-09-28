@@ -1,0 +1,488 @@
+@import url("./izzy-design-system.css");
+
+/* ============================================================
+   IZZY 2026 — DASHBOARD PILOT
+   Capa visual aislada para validar el nuevo lenguaje de diseño.
+   No modifica lógica, IDs, AJAX ni comportamiento del módulo.
+   ============================================================ */
+
+/* Base */
+body {
+    background: var(--izzy-bg);
+}
+
+.container-fluid {
+    font-family: var(--izzy-font-family);
+    color: var(--izzy-text);
+}
+
+/* Breadcrumb */
+.breadcrumb-container {
+    margin-bottom: 18px;
+}
+
+.breadcrumb-harmony {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.breadcrumb-harmony .breadcrumb-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--izzy-text-muted);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.breadcrumb-harmony .breadcrumb-item.active {
+    color: var(--izzy-navy);
+}
+
+.breadcrumb-icon {
+    color: var(--izzy-blue);
+}
+
+/* Secciones principales */
+.dashboard-section-card,
+.dashboard-fiscales-card {
+    border: 1px solid var(--izzy-border) !important;
+    border-radius: var(--izzy-radius-lg) !important;
+    background: var(--izzy-surface) !important;
+    box-shadow: var(--izzy-shadow-sm) !important;
+    overflow: hidden;
+}
+
+.dashboard-section-header,
+.dashboard-fiscales-header {
+    min-height: 72px;
+    padding: 15px 18px !important;
+    background: var(--izzy-surface) !important;
+    border-bottom: 1px solid var(--izzy-border) !important;
+}
+
+.dashboard-section-heading,
+.dashboard-fiscales-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.dashboard-section-heading strong,
+.dashboard-fiscales-heading strong {
+    color: var(--izzy-navy) !important;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -.01em;
+}
+
+.dashboard-section-heading small,
+.dashboard-fiscales-heading small {
+    color: var(--izzy-text-muted) !important;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dashboard-section-icon,
+.dashboard-fiscales-heading-icon {
+    width: 42px !important;
+    height: 42px !important;
+    flex: 0 0 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px !important;
+    background: var(--izzy-blue-soft) !important;
+    border: 1px solid rgba(16, 152, 234, .16) !important;
+    color: var(--izzy-blue) !important;
+    font-size: 17px;
+}
+
+.dashboard-section-body,
+.dashboard-fiscales-card > .card-body,
+.dashboard-fiscales-collapsible > .card-body {
+    background: var(--izzy-surface-soft);
+}
+
+/* Botones de colapsar: azul suave, no blanco */
+.dashboard-toggle-btn {
+    min-height: 38px;
+    padding: 8px 12px;
+    border: 1px solid rgba(17, 75, 199, .18) !important;
+    border-radius: 9px !important;
+    background: var(--izzy-cobalt-soft) !important;
+    color: var(--izzy-cobalt) !important;
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: none !important;
+}
+
+.dashboard-toggle-btn:hover,
+.dashboard-toggle-btn:focus {
+    background: #DFE9FB !important;
+    border-color: rgba(17, 75, 199, .30) !important;
+    color: var(--izzy-navy) !important;
+    box-shadow: var(--izzy-focus-ring) !important;
+}
+
+/* KPI cards */
+.dashboard-card {
+    min-height: 150px;
+    border: 1px solid var(--izzy-border) !important;
+    border-radius: 14px !important;
+    background: var(--izzy-surface) !important;
+    color: var(--izzy-text) !important;
+    box-shadow: 0 4px 16px rgba(11, 31, 82, .055) !important;
+    overflow: hidden;
+    transition: transform var(--izzy-transition), box-shadow var(--izzy-transition), border-color var(--izzy-transition);
+}
+
+.dashboard-card::before {
+    width: 4px !important;
+    background: var(--izzy-cobalt) !important;
+}
+
+.col-xl-3:nth-child(2) .dashboard-card::before {
+    background: var(--izzy-blue) !important;
+}
+
+.col-xl-3:nth-child(3) .dashboard-card::before {
+    background: var(--izzy-cyan) !important;
+}
+
+.col-xl-3:nth-child(4) .dashboard-card::before {
+    background: var(--izzy-navy) !important;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(16, 152, 234, .35) !important;
+    box-shadow: 0 12px 26px rgba(11, 31, 82, .09) !important;
+}
+
+.dashboard-card .card-body {
+    padding: 20px 20px 17px 22px !important;
+}
+
+.dashboard-card .card-subtitle {
+    color: var(--izzy-text-muted) !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    letter-spacing: .045em !important;
+}
+
+.dashboard-card h2 {
+    margin-top: 4px;
+    color: var(--izzy-navy) !important;
+    font-size: 28px !important;
+    font-weight: 800 !important;
+    letter-spacing: -.035em;
+}
+
+.dashboard-card .icon-circle,
+.col-xl-3:nth-child(2) .dashboard-card .icon-circle,
+.col-xl-3:nth-child(3) .dashboard-card .icon-circle,
+.col-xl-3:nth-child(4) .dashboard-card .icon-circle {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 12px !important;
+    background: var(--izzy-blue-soft) !important;
+    border: 1px solid rgba(16, 152, 234, .16) !important;
+    color: var(--izzy-blue) !important;
+    font-size: 18px !important;
+}
+
+.col-xl-3:nth-child(2) .dashboard-card .icon-circle {
+    background: var(--izzy-cobalt-soft) !important;
+    color: var(--izzy-cobalt) !important;
+}
+
+.col-xl-3:nth-child(3) .dashboard-card .icon-circle {
+    background: var(--izzy-cyan-soft) !important;
+    color: #0B86B2 !important;
+}
+
+.col-xl-3:nth-child(4) .dashboard-card .icon-circle {
+    background: var(--izzy-navy-soft) !important;
+    color: var(--izzy-navy) !important;
+}
+
+.dashboard-card .card-footer-text {
+    color: var(--izzy-text-muted) !important;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.dashboard-card .card-footer-text i {
+    color: var(--izzy-blue);
+}
+
+/* Charts */
+.chart-card {
+    border: 1px solid var(--izzy-border) !important;
+    border-radius: 14px !important;
+    background: var(--izzy-surface) !important;
+    box-shadow: 0 4px 16px rgba(11, 31, 82, .05) !important;
+    overflow: hidden;
+}
+
+.chart-header {
+    min-height: 62px;
+    padding: 14px 16px !important;
+    background: var(--izzy-surface) !important;
+    border-bottom: 1px solid var(--izzy-border) !important;
+}
+
+.chart-title {
+    color: var(--izzy-navy) !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+}
+
+.chart-title i {
+    color: var(--izzy-blue) !important;
+}
+
+.chart-btn {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(16, 152, 234, .20) !important;
+    border-radius: 9px !important;
+    background: var(--izzy-blue-soft) !important;
+    color: var(--izzy-blue) !important;
+    box-shadow: none !important;
+}
+
+.chart-btn:hover,
+.chart-btn:focus {
+    background: #DCEFFE !important;
+    color: var(--izzy-cobalt) !important;
+    border-color: rgba(17, 75, 199, .28) !important;
+}
+
+.year-selector .btn {
+    min-height: 34px;
+    border: 1px solid var(--izzy-border) !important;
+    background: var(--izzy-surface-soft) !important;
+    color: var(--izzy-text-muted) !important;
+    font-size: 11px;
+    font-weight: 700;
+    box-shadow: none !important;
+}
+
+.year-selector .btn.active,
+.year-selector .btn:hover {
+    background: var(--izzy-cobalt) !important;
+    border-color: var(--izzy-cobalt) !important;
+    color: var(--izzy-white) !important;
+}
+
+.dashboard-chart-body {
+    background: var(--izzy-surface);
+}
+
+/* Documentos fiscales */
+.dashboard-fiscales-link {
+    min-height: 38px !important;
+    padding: 8px 12px !important;
+    border: 1px solid var(--izzy-cobalt) !important;
+    border-radius: 9px !important;
+    background: var(--izzy-cobalt) !important;
+    color: var(--izzy-white) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+}
+
+.dashboard-fiscales-link:hover {
+    background: var(--izzy-navy) !important;
+    border-color: var(--izzy-navy) !important;
+    color: var(--izzy-white) !important;
+}
+
+.dashboard-fiscal-item {
+    border: 1px solid var(--izzy-border) !important;
+    border-radius: 13px !important;
+    background: var(--izzy-surface) !important;
+    box-shadow: 0 3px 12px rgba(11, 31, 82, .045) !important;
+}
+
+.dashboard-fiscal-item::before {
+    background: var(--izzy-blue) !important;
+}
+
+.dashboard-fiscal-item-head {
+    background: var(--izzy-surface-soft) !important;
+    border-bottom-color: var(--izzy-border) !important;
+}
+
+.dashboard-fiscal-icon {
+    background: var(--izzy-blue-soft) !important;
+    border-color: rgba(16, 152, 234, .16) !important;
+    color: var(--izzy-blue) !important;
+}
+
+.dashboard-fiscal-title-row h4,
+.dashboard-fiscal-section-title,
+.dashboard-fiscal-next strong {
+    color: var(--izzy-navy) !important;
+}
+
+.dashboard-fiscal-section-title i,
+.dashboard-fiscal-detail-icon {
+    color: var(--izzy-blue);
+}
+
+.dashboard-fiscal-next {
+    border-color: var(--izzy-border) !important;
+    background: var(--izzy-blue-soft) !important;
+}
+
+.dashboard-fiscal-progress-track {
+    background: #E6EBF3 !important;
+}
+
+.dashboard-fiscal-progress-track span {
+    background: var(--izzy-blue) !important;
+}
+
+.dashboard-fiscal-progress-meta strong {
+    color: var(--izzy-cobalt) !important;
+}
+
+/* Filtros / controles */
+.dashboard-fiscales-page-size select,
+.dashboard-fiscales-search .form-control {
+    min-height: 38px;
+    border: 1px solid var(--izzy-border) !important;
+    border-radius: 9px !important;
+    background: var(--izzy-surface) !important;
+    color: var(--izzy-text) !important;
+}
+
+.dashboard-fiscales-search .input-group-text {
+    border-color: var(--izzy-border) !important;
+    background: var(--izzy-blue-soft) !important;
+    color: var(--izzy-blue) !important;
+}
+
+.dashboard-fiscales-search .form-control:focus,
+.dashboard-fiscales-page-size select:focus {
+    border-color: rgba(16, 152, 234, .55) !important;
+    box-shadow: var(--izzy-focus-ring) !important;
+}
+
+.dashboard-fiscales-view-btn {
+    min-height: 36px;
+    border-color: var(--izzy-border) !important;
+    background: var(--izzy-surface-soft) !important;
+    color: var(--izzy-text-muted) !important;
+}
+
+.dashboard-fiscales-view-btn.active,
+.dashboard-fiscales-view-btn:hover {
+    background: var(--izzy-cobalt) !important;
+    border-color: var(--izzy-cobalt) !important;
+    color: var(--izzy-white) !important;
+}
+
+.dashboard-page-btn {
+    border-color: var(--izzy-border) !important;
+    background: var(--izzy-surface-soft) !important;
+    color: var(--izzy-text) !important;
+}
+
+.dashboard-page-btn:hover:not(.disabled):not(.active) {
+    background: var(--izzy-blue-soft) !important;
+    border-color: rgba(16, 152, 234, .30) !important;
+    color: var(--izzy-cobalt) !important;
+}
+
+.dashboard-page-btn.active {
+    background: var(--izzy-cobalt) !important;
+    border-color: var(--izzy-cobalt) !important;
+    color: var(--izzy-white) !important;
+}
+
+/* Footer de tarjetas */
+.dashboard-fiscales-card .card-footer {
+    background: var(--izzy-surface-soft) !important;
+    border-top: 1px solid var(--izzy-border) !important;
+    color: var(--izzy-text-muted) !important;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .dashboard-section-header,
+    .dashboard-fiscales-header {
+        gap: 12px;
+    }
+
+    .dashboard-card {
+        min-height: 142px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .dashboard-section-header,
+    .dashboard-fiscales-header {
+        align-items: flex-start !important;
+        flex-direction: column;
+    }
+
+    .dashboard-toggle-btn,
+    .dashboard-fiscales-link {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .chart-header {
+        align-items: flex-start !important;
+        gap: 12px;
+    }
+
+    .chart-actions {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dashboard-section-header,
+    .dashboard-fiscales-header {
+        padding: 13px 14px !important;
+    }
+
+    .dashboard-section-heading strong,
+    .dashboard-fiscales-heading strong {
+        font-size: 14px;
+    }
+
+    .dashboard-card .card-body {
+        padding: 17px 16px 15px 18px !important;
+    }
+
+    .dashboard-card h2 {
+        font-size: 25px !important;
+    }
+
+    .dashboard-card .icon-circle,
+    .col-xl-3:nth-child(2) .dashboard-card .icon-circle,
+    .col-xl-3:nth-child(3) .dashboard-card .icon-circle,
+    .col-xl-3:nth-child(4) .dashboard-card .icon-circle {
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-card,
+    .chart-btn,
+    .dashboard-toggle-btn {
+        transition: none !important;
+    }
+}
