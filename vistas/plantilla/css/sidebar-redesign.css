@@ -162,8 +162,7 @@
     border-radius: 999px;
 }
 
-.izzy-flyout-link,
-.izzy-flyout-group-title {
+.izzy-flyout-link {
     width: 100%;
     min-height: 38px;
     display: flex;
@@ -192,8 +191,7 @@
     box-shadow: var(--izzy-focus-ring);
 }
 
-.izzy-flyout-link .sb-nav-link-icon,
-.izzy-flyout-group-title .sb-nav-link-icon {
+.izzy-flyout-link .sb-nav-link-icon .sb-nav-link-icon {
     width: 21px;
     min-width: 21px;
     margin-right: 0 !important;
@@ -203,44 +201,9 @@
     color: var(--izzy-blue);
 }
 
-.izzy-flyout-link .ti-svg,
-.izzy-flyout-group-title .ti-svg {
+.izzy-flyout-link .ti-svg .ti-svg {
     width: 17px;
     height: 17px;
-}
-
-.izzy-flyout-group {
-    padding: 2px 0;
-}
-
-.izzy-flyout-group + .izzy-flyout-group,
-.izzy-flyout-link + .izzy-flyout-group,
-.izzy-flyout-group + .izzy-flyout-link,
-.izzy-flyout-link + .izzy-flyout-link {
-    margin-top: 2px;
-}
-
-/* Los niveles intermedios (por ejemplo Reportes) son parte real del menú,
-   no títulos decorativos; se conservan en el mismo orden de la BD. */
-.izzy-flyout-group-title {
-    min-height: 36px;
-    color: var(--izzy-navy) !important;
-    font-weight: 750;
-    background: var(--izzy-navy-soft);
-}
-
-.izzy-flyout-group-items {
-    position: relative;
-    margin: 2px 0 4px 15px;
-    padding: 2px 0 2px 9px;
-    border-left: 1px solid var(--izzy-border);
-}
-
-.izzy-flyout-group-items .izzy-flyout-link {
-    min-height: 34px;
-    padding: 7px 9px;
-    font-size: 11px;
-    font-weight: 600;
 }
 
 /* En escritorio los submenús ya no ocupan espacio debajo del módulo:
