@@ -213,7 +213,7 @@ class DynamicNavbar {
                     if (empty($submenus1)) {
                         $html .= '
                         <a class="nav-link link" href="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . $submenu_name . '/" id="' . $submenu_name . '" ' . $submenu_display . '>
-                            <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu_name, $submenu_icon)) . '</div><span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu_descripcion)) . '</span>
+                            <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu_name, $submenu_icon)) . '</div><span class="menu-text">' . htmlspecialchars($submenu_descripcion, ENT_QUOTES, 'UTF-8') . '</span>
                         </a>';
                     } else {
                         // Si tiene submenús de nivel 2, es un menú desplegable
@@ -221,7 +221,7 @@ class DynamicNavbar {
                         <a class="nav-link collapsed link" href="#" data-toggle="collapse" data-target="#' . $submenu_name . 'Collapse"
                             aria-expanded="false" aria-controls="' . $submenu_name . 'Collapse" id="' . $submenu_name . '" ' . $submenu_display . '>
                             <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu_name, $submenu_icon)) . '</div>
-                            <span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu_descripcion)) . '</span>
+                            <span class="menu-text">' . htmlspecialchars($submenu_descripcion, ENT_QUOTES, 'UTF-8') . '</span>
                             <div class="sb-sidenav-collapse-arrow">' . izzyTablerIcon('chevron-right', 'izzy-sidebar-chevron') . '</div>
                         </a>
                         <div class="collapse" id="' . $submenu_name . 'Collapse" aria-labelledby="headingOne"
@@ -237,7 +237,7 @@ class DynamicNavbar {
                             
                             $html .= '
                             <a class="nav-link link" href="' . htmlspecialchars(SERVERURL, ENT_QUOTES, 'UTF-8') . $submenu1_name . '/" id="' . $submenu1_name . '" ' . $submenu1_display . '>
-                                <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu1_name, $submenu1_icon)) . '</div><span class="menu-text">' . ucfirst(str_replace('_', ' ', $submenu1_descripcion)) . '</span>
+                                <div class="sb-nav-link-icon">' . izzyTablerIcon($this->iconoTabler($submenu1_name, $submenu1_icon)) . '</div><span class="menu-text">' . htmlspecialchars($submenu1_descripcion, ENT_QUOTES, 'UTF-8') . '</span>
                             </a>';
                         }
                         
