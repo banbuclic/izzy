@@ -109,6 +109,119 @@ class DynamicNavbar {
         // Por ahora asumimos que todos tienen permiso
         return true;
     }
+
+    // Nombres y orden visual aprobados para el rediseño.
+    // Las rutas, IDs, planes y permisos siguen viniendo de la base de datos.
+    private function getSubmenuVisualConfig() {
+        return [
+            'ventas' => [
+                'clientes' => 'Clientes',
+                'facturas' => 'Facturas',
+                'cajas' => 'Cajas',
+                'cotizacion' => 'Cotización'
+            ],
+            'compras' => [
+                'proveedores' => 'Proveedores',
+                'facturacompras' => 'Compras'
+            ],
+            'almacen' => [
+                'productos' => 'Productos',
+                'inventario' => 'Movimientos',
+                'transferencia' => 'Inventario'
+            ],
+            'contabilidad' => [
+                'cuentascontabilidad' => 'Cuentas',
+                'movimientoscontabilidad' => 'Movimientos',
+                'ingresoscontabilidad' => 'Ingresos',
+                'gastoscontabilidad' => 'Gastos',
+                'chequescontabilidad' => 'Cheques',
+                'confctacontabilidad' => 'Configuración de cuentas',
+                'conftipopago' => 'Tipo de pago',
+                'confbancos' => 'Bancos',
+                'confimpuestos' => 'Impuestos'
+            ],
+            'recursoshumanos' => [
+                'colaboradores' => 'Colaboradores',
+                'contrato' => 'Contrato',
+                'nomina' => 'Nómina',
+                'asistencia' => 'Asistencia'
+            ],
+            'reportes' => [
+                'reporte_historial' => 'Historial',
+                'reporte_ventas' => 'Ventas',
+                'reporte_compras' => 'Compras'
+            ],
+            'configuracion' => [
+                'puestos' => 'Puestos',
+                'users' => 'Usuarios',
+                'secuencia' => 'Secuencia',
+                'empresa' => 'Empresa',
+                'confalmacen' => 'Almacén',
+                'confubicacion' => 'Ubicación',
+                'confmedida' => 'Medidas',
+                'privilegio' => 'Privilegios',
+                'tipouser' => 'Permisos',
+                'confcategoria' => 'Categoría',
+                'confemail' => 'Correo',
+                'confimpresora' => 'Impresora',
+                'programapuntos' => 'Puntos'
+            ],
+            'sistema' => [
+                'registarmenus' => 'Menús',
+                'registrarplanes' => 'Planes',
+                'asignacionplanes' => 'Asignar planes'
+            ]
+        ];
+    }
+
+    private function prepararSubmenusVisuales($menuName, $submenus) {
+        $config = $this->getSubmenuVisualConfig();
+        $menuKey = strtolower((string)$menuName);
+
+        if (!isset($config[$menuKey]) || empty($submenus)) {
+            return $submenus;
+        }
+
+        $prioridades = array_flip(array_keys($config[$menuKey]));
+
+        foreach ($submenus as $index => &$submenu) {
+            $submenu['_izzy_original_index'] = $index;
+        }
+        unset($submenu);
+
+        usort($submenus, function ($a, $b) use ($prioridades) {
+            $aKey = strtolower((string)$a['name']);
+            $bKey = strtolower((string)$b['name']);
+
+            $aOrden = isset($prioridades[$aKey]) ? (int)$prioridades[$aKey] : 1000 + (int)$a['_izzy_original_index'];
+            $bOrden = isset($prioridades[$bKey]) ? (int)$prioridades[$bKey] : 1000 + (int)$b['_izzy_original_index'];
+
+            if ($aOrden === $bOrden) {
+                return (int)$a['_izzy_original_index'] <=> (int)$b['_izzy_original_index'];
+            }
+
+            return $aOrden <=> $bOrden;
+        });
+
+        foreach ($submenus as &$submenu) {
+            unset($submenu['_izzy_original_index']);
+        }
+        unset($submenu);
+
+        return $submenus;
+    }
+
+    private function descripcionSubmenuVisual($menuName, $submenuName, $descripcionOriginal) {
+        $config = $this->getSubmenuVisualConfig();
+        $menuKey = strtolower((string)$menuName);
+        $submenuKey = strtolower((string)$submenuName);
+
+        if (isset($config[$menuKey][$submenuKey])) {
+            return $config[$menuKey][$submenuKey];
+        }
+
+        return $descripcionOriginal;
+    }
     
     // Iconografía oficial del rediseño IZZY (Tabler Icons).
     // Mantiene compatibilidad con los nombres/rutas existentes de la BD.
@@ -178,6 +291,7 @@ class DynamicNavbar {
             
             // Obtener los submenús de nivel 1 para este menú
             $submenus = $this->getSubmenus($menu_id);
+            $submenus = $this->prepararSubmenusVisuales($menu_name, $submenus);
             
             // Si no hay submenús, es un enlace directo
             if (empty($submenus)) {
@@ -202,7 +316,7 @@ class DynamicNavbar {
                 foreach ($submenus as $submenu) {
                     $submenu_id = $submenu['submenu_id'];
                     $submenu_name = $submenu['name'];
-                    $submenu_descripcion = $submenu['descripcion'];
+                    $submenu_descripcion = $this->descripcionSubmenuVisual($menu_name, $submenu_name, $submenu['descripcion']);
                     $submenu_icon = $submenu['icon'];
                     $submenu_display = $this->tienePermiso($submenu_id, 'submenu') ? '' : 'style="display:none"';
                     
