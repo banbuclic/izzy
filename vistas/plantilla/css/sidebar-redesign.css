@@ -210,6 +210,32 @@
     height: 17px;
 }
 
+.izzy-flyout-link .sb-sidenav-collapse-arrow {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--izzy-text-muted, #667085);
+}
+
+.izzy-flyout-link .sb-sidenav-collapse-arrow .ti-svg {
+    width: 15px;
+    height: 15px;
+}
+
+.izzy-flyout-link.is-nested-open {
+    background: var(--izzy-blue-soft);
+    color: var(--izzy-cobalt) !important;
+}
+
+.izzy-flyout-link.is-nested-open .sb-sidenav-collapse-arrow {
+    color: var(--izzy-cobalt);
+}
+
+.izzy-sidebar-subflyout {
+    z-index: 1091;
+}
+
 /* En escritorio los submenús ya no ocupan espacio debajo del módulo:
    se muestran exclusivamente en el panel flotante. */
 @media (min-width: 992px) and (hover: hover) and (pointer: fine) {
