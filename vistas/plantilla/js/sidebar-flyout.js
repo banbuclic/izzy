@@ -17,7 +17,15 @@
     panel.setAttribute('aria-hidden', 'true');
     document.body.appendChild(panel);
 
+    var subPanel = document.createElement('div');
+    subPanel.className = 'izzy-sidebar-flyout izzy-sidebar-subflyout';
+    subPanel.setAttribute('role', 'menu');
+    subPanel.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(subPanel);
+
     var currentTrigger = null;
+    var currentNestedTrigger = null;
+    var nestedSources = new WeakMap();
     var closeTimer = null;
 
     function clearCloseTimer() {
@@ -46,23 +54,6 @@
         return clone;
     }
 
-    function copyIcon(source, wrapperClass) {
-        var wrap = document.createElement('span');
-        wrap.className = wrapperClass || '';
-        var icon = source ? source.querySelector('.sb-nav-link-icon') : null;
-        if (icon) {
-            var iconClone = icon.cloneNode(true);
-            iconClone.removeAttribute('style');
-            wrap.appendChild(iconClone);
-        }
-        return wrap;
-    }
-
-    function itemText(link) {
-        var text = link ? link.querySelector('.menu-text') : null;
-        return text ? text.textContent.trim() : '';
-    }
-
     function isHidden(link) {
         if (!link) return true;
         if (link.classList.contains('perm-hidden')) return true;
@@ -70,7 +61,37 @@
         return false;
     }
 
-    function renderNav(sourceNav, targetContainer, depth) {
+    function prepareDirectLink(sourceLink) {
+        var link = cleanClone(sourceLink);
+        if (!link) return null;
+
+        link.className = 'izzy-flyout-link';
+        link.setAttribute('role', 'menuitem');
+
+        var arrow = link.querySelector('.sb-sidenav-collapse-arrow');
+        if (arrow) arrow.remove();
+
+        return link;
+    }
+
+    function prepareNestedParent(sourceLink, nestedNav) {
+        var link = cleanClone(sourceLink);
+        if (!link) return null;
+
+        link.className = 'izzy-flyout-link izzy-flyout-parent';
+        link.setAttribute('role', 'menuitem');
+        link.setAttribute('href', '#');
+        link.setAttribute('aria-haspopup', 'true');
+        link.setAttribute('aria-expanded', 'false');
+
+        nestedSources.set(link, nestedNav);
+        return link;
+    }
+
+    // Primer panel: muestra exactamente el nivel 1 real del módulo.
+    // Si una opción tiene un segundo nivel (por ejemplo Reportes),
+    // se conserva como opción real y abre un segundo panel sin encabezados.
+    function renderPrimaryNav(sourceNav, targetContainer) {
         if (!sourceNav) return 0;
 
         var children = Array.prototype.slice.call(sourceNav.children);
@@ -85,24 +106,52 @@
             var hasNested = !!(next && next.classList && next.classList.contains('collapse'));
 
             if (hasNested) {
-                // El nivel intermedio solo organiza el menú en la BD.
-                // En el flyout mostramos una lista plana de opciones finales,
-                // sin títulos, subtítulos ni encabezados adicionales.
                 var nestedNav = next.querySelector('nav');
-                added += renderNav(nestedNav, targetContainer, (depth || 0) + 1);
+                var parentLink = prepareNestedParent(child, nestedNav);
+
+                if (parentLink) {
+                    targetContainer.appendChild(parentLink);
+                    added++;
+                }
 
                 i++;
                 continue;
             }
 
-            var link = cleanClone(child);
+            var directLink = prepareDirectLink(child);
+            if (!directLink) continue;
+
+            targetContainer.appendChild(directLink);
+            added++;
+        }
+
+        return added;
+    }
+
+    // Segundo panel: lista final de enlaces, sin títulos ni subtítulos.
+    function renderFinalNav(sourceNav, targetContainer) {
+        if (!sourceNav) return 0;
+
+        var children = Array.prototype.slice.call(sourceNav.children);
+        var added = 0;
+
+        for (var i = 0; i < children.length; i++) {
+            var child = children[i];
+            if (!child.matches || !child.matches('a.nav-link')) continue;
+            if (isHidden(child)) continue;
+
+            var next = children[i + 1];
+            var hasNested = !!(next && next.classList && next.classList.contains('collapse'));
+
+            if (hasNested) {
+                var nestedNav = next.querySelector('nav');
+                added += renderFinalNav(nestedNav, targetContainer);
+                i++;
+                continue;
+            }
+
+            var link = prepareDirectLink(child);
             if (!link) continue;
-
-            link.className = 'izzy-flyout-link';
-            link.setAttribute('role', 'menuitem');
-
-            var arrow = link.querySelector('.sb-sidenav-collapse-arrow');
-            if (arrow) arrow.remove();
 
             targetContainer.appendChild(link);
             added++;
@@ -122,16 +171,33 @@
         if (!sourceNav) return false;
 
         panel.innerHTML = '';
+        subPanel.innerHTML = '';
+        nestedSources = new WeakMap();
+        closeNested();
 
         var body = document.createElement('div');
         body.className = 'izzy-sidebar-flyout-body';
 
-        // Se respeta exactamente el orden y el texto que ya renderizó
-        // DynamicNavbar desde la base de datos.
-        var count = renderNav(sourceNav, body, 0);
+        var count = renderPrimaryNav(sourceNav, body);
         if (!count) return false;
 
         panel.appendChild(body);
+        return true;
+    }
+
+    function buildNestedFlyout(trigger) {
+        var sourceNav = nestedSources.get(trigger);
+        if (!sourceNav) return false;
+
+        subPanel.innerHTML = '';
+
+        var body = document.createElement('div');
+        body.className = 'izzy-sidebar-flyout-body';
+
+        var count = renderFinalNav(sourceNav, body);
+        if (!count) return false;
+
+        subPanel.appendChild(body);
         return true;
     }
 
@@ -165,8 +231,6 @@
 
         left = Math.max(viewportGap, Math.min(left, window.innerWidth - panelRect.width - viewportGap));
 
-        // En escritorio buscamos que el cuadro quede visualmente centrado
-        // respecto al módulo que lo activa, subiéndolo cuando tenga muchas opciones.
         var triggerCenter = rect.top + (rect.height / 2);
         var centeredTop = triggerCenter - (panelRect.height / 2);
         var top = Math.max(viewportGap, centeredTop);
@@ -181,6 +245,88 @@
         panel.style.left = Math.round(left) + 'px';
         panel.style.top = Math.round(top) + 'px';
         panel.style.setProperty('--izzy-flyout-arrow-top', Math.round(arrowTop) + 'px');
+
+        if (currentNestedTrigger && subPanel.classList.contains('is-open')) {
+            positionNestedFlyout(currentNestedTrigger);
+        }
+    }
+
+    function positionNestedFlyout(trigger) {
+        var triggerRect = trigger.getBoundingClientRect();
+        var parentRect = panel.getBoundingClientRect();
+        var gap = 9;
+        var viewportGap = 12;
+
+        subPanel.classList.remove('opens-left');
+        subPanel.style.left = '0px';
+        subPanel.style.top = '0px';
+        subPanel.style.maxHeight = Math.max(120, window.innerHeight - (viewportGap * 2)) + 'px';
+
+        var body = subPanel.querySelector('.izzy-sidebar-flyout-body');
+        if (body) {
+            body.style.maxHeight = Math.max(110, window.innerHeight - (viewportGap * 2)) + 'px';
+        }
+
+        var subRect = subPanel.getBoundingClientRect();
+        var spaceRight = window.innerWidth - parentRect.right - viewportGap;
+        var spaceLeft = parentRect.left - viewportGap;
+        var openLeft = spaceRight < subRect.width + gap && spaceLeft > spaceRight;
+
+        var left;
+        if (openLeft) {
+            subPanel.classList.add('opens-left');
+            left = parentRect.left - subRect.width - gap;
+        } else {
+            left = parentRect.right + gap;
+        }
+
+        left = Math.max(viewportGap, Math.min(left, window.innerWidth - subRect.width - viewportGap));
+
+        var triggerCenter = triggerRect.top + (triggerRect.height / 2);
+        var top = triggerCenter - (subRect.height / 2);
+        top = Math.max(viewportGap, Math.min(top, window.innerHeight - subRect.height - viewportGap));
+
+        var arrowTop = triggerCenter - top - 6;
+        arrowTop = Math.max(14, Math.min(subRect.height - 20, arrowTop));
+
+        subPanel.style.left = Math.round(left) + 'px';
+        subPanel.style.top = Math.round(top) + 'px';
+        subPanel.style.setProperty('--izzy-flyout-arrow-top', Math.round(arrowTop) + 'px');
+    }
+
+    function showNested(trigger) {
+        if (!desktopQuery.matches) return;
+
+        clearCloseTimer();
+
+        if (currentNestedTrigger && currentNestedTrigger !== trigger) {
+            currentNestedTrigger.classList.remove('is-nested-open');
+            currentNestedTrigger.setAttribute('aria-expanded', 'false');
+        }
+
+        if (!buildNestedFlyout(trigger)) {
+            closeNested();
+            return;
+        }
+
+        currentNestedTrigger = trigger;
+        currentNestedTrigger.classList.add('is-nested-open');
+        currentNestedTrigger.setAttribute('aria-expanded', 'true');
+
+        subPanel.classList.add('is-open');
+        subPanel.setAttribute('aria-hidden', 'false');
+        positionNestedFlyout(trigger);
+    }
+
+    function closeNested() {
+        subPanel.classList.remove('is-open');
+        subPanel.setAttribute('aria-hidden', 'true');
+
+        if (currentNestedTrigger) {
+            currentNestedTrigger.classList.remove('is-nested-open');
+            currentNestedTrigger.setAttribute('aria-expanded', 'false');
+            currentNestedTrigger = null;
+        }
     }
 
     function showFlyout(trigger) {
@@ -206,6 +352,8 @@
 
     function closeFlyout() {
         clearCloseTimer();
+        closeNested();
+
         panel.classList.remove('is-open');
         panel.setAttribute('aria-hidden', 'true');
 
@@ -234,12 +382,45 @@
         });
     });
 
+    panel.addEventListener('mouseover', function (event) {
+        var link = event.target.closest('.izzy-flyout-link');
+        if (!link || !panel.contains(link)) return;
+
+        if (nestedSources.has(link)) {
+            showNested(link);
+        } else {
+            closeNested();
+        }
+    });
+
+    panel.addEventListener('focusin', function (event) {
+        var link = event.target.closest('.izzy-flyout-link');
+        if (!link || !panel.contains(link)) return;
+
+        if (nestedSources.has(link)) {
+            showNested(link);
+        } else {
+            closeNested();
+        }
+    });
+
+    panel.addEventListener('click', function (event) {
+        var link = event.target.closest('.izzy-flyout-parent');
+        if (!link || !panel.contains(link)) return;
+
+        event.preventDefault();
+        event.stopPropagation();
+        showNested(link);
+    });
+
     panel.addEventListener('mouseenter', clearCloseTimer);
     panel.addEventListener('mouseleave', scheduleClose);
 
-    panel.addEventListener('focusin', clearCloseTimer);
-    panel.addEventListener('focusout', function (event) {
-        if (!panel.contains(event.relatedTarget)) scheduleClose();
+    subPanel.addEventListener('mouseenter', clearCloseTimer);
+    subPanel.addEventListener('mouseleave', scheduleClose);
+    subPanel.addEventListener('focusin', clearCloseTimer);
+    subPanel.addEventListener('focusout', function (event) {
+        if (!subPanel.contains(event.relatedTarget)) scheduleClose();
     });
 
     document.addEventListener('keydown', function (event) {
